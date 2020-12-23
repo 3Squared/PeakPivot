@@ -15,4 +15,9 @@ public struct BuildPivotFilter {
     
     /// The values of the field name to include
     public let include: [FieldValue]
+    
+    public init(fieldName: FieldName, include: [FieldName]) {
+        self.fieldName = fieldName
+        self.include = include
+    }
 }
