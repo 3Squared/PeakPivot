@@ -14,10 +14,8 @@
 		F59987E1259364FE0041EC9D /* FieldValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59987DE259364FE0041EC9D /* FieldValueCell.swift */; };
 		F59987E2259364FE0041EC9D /* PivotTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59987DF259364FE0041EC9D /* PivotTableViewCell.swift */; };
 		F59987E3259364FE0041EC9D /* FieldNameHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59987E0259364FE0041EC9D /* FieldNameHeaderCell.swift */; };
-		F59A866725924A5700D65CAC /* PeakPivot_ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59A865425924A5600D65CAC /* PeakPivot_ExampleApp.swift */; };
-		F59A866825924A5700D65CAC /* PeakPivot_ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59A865425924A5600D65CAC /* PeakPivot_ExampleApp.swift */; };
-		F59A866925924A5700D65CAC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59A865525924A5600D65CAC /* ContentView.swift */; };
-		F59A866A25924A5700D65CAC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59A865525924A5600D65CAC /* ContentView.swift */; };
+		F59987F7259367880041EC9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F59987F6259367880041EC9D /* Main.storyboard */; };
+		F59987FF259367CA0041EC9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59987FE259367CA0041EC9D /* AppDelegate.swift */; };
 		F59A866B25924A5700D65CAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F59A865625924A5700D65CAC /* Assets.xcassets */; };
 		F59A866C25924A5700D65CAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F59A865625924A5700D65CAC /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -28,8 +26,8 @@
 		F59987DE259364FE0041EC9D /* FieldValueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldValueCell.swift; sourceTree = "<group>"; };
 		F59987DF259364FE0041EC9D /* PivotTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PivotTableViewCell.swift; sourceTree = "<group>"; };
 		F59987E0259364FE0041EC9D /* FieldNameHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldNameHeaderCell.swift; sourceTree = "<group>"; };
-		F59A865425924A5600D65CAC /* PeakPivot_ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeakPivot_ExampleApp.swift; sourceTree = "<group>"; };
-		F59A865525924A5600D65CAC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F59987F6259367880041EC9D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		F59987FE259367CA0041EC9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F59A865625924A5700D65CAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F59A865B25924A5700D65CAC /* PeakPivot Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PeakPivot Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F59A865E25924A5700D65CAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -71,8 +69,6 @@
 		F59A865325924A5600D65CAC /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				F59A865425924A5600D65CAC /* PeakPivot_ExampleApp.swift */,
-				F59A865525924A5600D65CAC /* ContentView.swift */,
 				F59A865625924A5700D65CAC /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -91,10 +87,12 @@
 			isa = PBXGroup;
 			children = (
 				F59987C825935E9B0041EC9D /* FieldSelectionViewController.swift */,
+				F59987FE259367CA0041EC9D /* AppDelegate.swift */,
 				F59987DA259363BD0041EC9D /* PivotViewController.swift */,
 				F59987E0259364FE0041EC9D /* FieldNameHeaderCell.swift */,
 				F59987DE259364FE0041EC9D /* FieldValueCell.swift */,
 				F59987DF259364FE0041EC9D /* PivotTableViewCell.swift */,
+				F59987F6259367880041EC9D /* Main.storyboard */,
 				F59A865E25924A5700D65CAC /* Info.plist */,
 			);
 			path = iOS;
@@ -196,6 +194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F59A866B25924A5700D65CAC /* Assets.xcassets in Resources */,
+				F59987F7259367880041EC9D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,13 +213,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F59987FF259367CA0041EC9D /* AppDelegate.swift in Sources */,
 				F59987E1259364FE0041EC9D /* FieldValueCell.swift in Sources */,
 				F59987C925935E9B0041EC9D /* FieldSelectionViewController.swift in Sources */,
 				F59987E3259364FE0041EC9D /* FieldNameHeaderCell.swift in Sources */,
 				F59987E2259364FE0041EC9D /* PivotTableViewCell.swift in Sources */,
 				F59987DB259363BD0041EC9D /* PivotViewController.swift in Sources */,
-				F59A866925924A5700D65CAC /* ContentView.swift in Sources */,
-				F59A866725924A5700D65CAC /* PeakPivot_ExampleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,8 +226,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F59A866A25924A5700D65CAC /* ContentView.swift in Sources */,
-				F59A866825924A5700D65CAC /* PeakPivot_ExampleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
