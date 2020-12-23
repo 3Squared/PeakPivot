@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "PeakPivot",
+        "repositoryURL": "git@github.com:3squared/PeakPivot.git",
+        "state": {
+          "branch": "main",
+          "revision": "dda0526abd592f052d619dd5f38948a5ccead56e",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

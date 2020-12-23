@@ -9,16 +9,16 @@
 import Foundation
 
 /// The column name from the CSV
-typealias FieldName = String
+public typealias FieldName = String
 
 /// The value of a cell in the CSV
-typealias FieldValue = String
+public typealias FieldValue = String
 
 /// A row in the CSV
-typealias TableRow = [FieldName : FieldValue]
+public typealias TableRow = [FieldName : FieldValue]
 
 /// Input data (e.g CSV) to create a pivot from
-typealias Table = [TableRow]
+public typealias Table = [TableRow]
 
 /// Convieince constant to represent "blank" in the table of pivot output
-let Blank: String = "(blank)"
+public let Blank: String = "(blank)"

@@ -9,11 +9,11 @@
 import Foundation
 
 /// Describes how to sort a pivot table
-enum BuildPivotDescriptor: Equatable, CaseIterable {
+public enum BuildPivotDescriptor: Equatable, CaseIterable {
     case byTitle(ascending: Bool = true)
     case byValue(ascending: Bool = true)
     
-    static var allCases: [BuildPivotDescriptor] {
+    public static var allCases: [BuildPivotDescriptor] {
         return [
             .byTitle(ascending: true),
             .byTitle(ascending: false),
@@ -28,7 +28,7 @@ extension BuildPivotDescriptor: Codable {
        case byTitle, byValue
      }
     
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         if let boolValue = try container.decodeIfPresent(Bool.self, forKey: .byTitle) {
             self = .byTitle(ascending: boolValue)
@@ -42,7 +42,7 @@ extension BuildPivotDescriptor: Codable {
        
     }
     
-    func encode(to encoder: Encoder) throws {
+    public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         switch self {
         case .byTitle(let ascending):
@@ -53,6 +53,6 @@ extension BuildPivotDescriptor: Codable {
     }
 }
 
-enum BuildPivotDescriptorDecodingError: Error {
+public enum BuildPivotDescriptorDecodingError: Error {
     case unknownKey
 }

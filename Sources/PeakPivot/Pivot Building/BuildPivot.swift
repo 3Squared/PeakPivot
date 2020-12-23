@@ -9,7 +9,7 @@
 import Foundation
 
 /// Build a pivot table given some input data
-protocol BuildPivot {
+public protocol BuildPivot {
     /// The table of data to be pivotted
     var table: Table? { get set }
     
@@ -32,13 +32,13 @@ protocol BuildPivot {
 }
 
 /// Errors generated during the pivot building process
-enum BuildPivotError: Error {
+public enum BuildPivotError: Error {
     case noTable
     case noFields
     case noOutput
 }
 
-extension BuildPivot {
+public extension BuildPivot {
 
     func build() throws -> Pivot {
         guard let table = table else {

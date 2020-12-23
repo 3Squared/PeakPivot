@@ -9,64 +9,64 @@
 import Foundation
 
 /// Output from processessing a Table into a Pivot
-struct Pivot {
+public struct Pivot {
     
     /// The rows in the Pivot
-    let rows: [PivotRow]
+    public let rows: [PivotRow]
     
     /// The filters applied on the Fields
-    let filterFields: [FilterField]
+    public  let filterFields: [FilterField]
     
     /// Total number of rows (including sub-rows) in the Pivot
-    let total: Int
+    public let total: Int
 }
 
 /// A Ro in a Pivot
-struct PivotRow {
+public struct PivotRow {
     
-    struct Value {
+    public struct Value {
         
         /// The count of the row
-        let count: Int
+        public let count: Int
         
         /// The precentage value calculated against the rest of the pivot
-        let percentage: Float?
+        public let percentage: Float?
     }
     
     /// The level of indentation, indexed starting at 0. A Pivot created with n fields will have n levels of indentation.
-    let level: Int
+    public let level: Int
     
     /// The title
-    let title: String
+    public let title: String
     
     /// The value
-    let value: Value
+    public  let value: Value
     
     /// The subrows at lower level of indentation
-    let subRows: [PivotRow]?
+    public let subRows: [PivotRow]?
 }
 
 /// A field in a Pivot (corresponds to a column in the source CSV) that can be filtered to be included or excluded
-struct FilterField {
+public struct FilterField {
     
     /// The name of the field
-    let name: FieldName
+    public let name: FieldName
     
     /// The values in the field to be included or excluded
-    let values: [FieldValue]
+    public let values: [FieldValue]
 }
 
 extension FilterField: Equatable {}
 
 extension FilterField: CustomDebugStringConvertible {
     
-    var debugDescription: String {
+    public var debugDescription: String {
         let valuesText = values.joined(separator: ", ")
         return "\(name)\n\t| \(valuesText)\n"
     }
 }
 
-extension Array where Element == PivotRow {
+public extension Array where Element == PivotRow {
     func flatten() -> [PivotRow] {
         return compactMap { flattenRow($0) }.flatMap { $0 }
     }
@@ -85,7 +85,7 @@ extension Array where Element == PivotRow {
 extension PivotRow.Value: Equatable { }
 
 extension PivotRow.Value: Comparable {
-    static func < (lhs: PivotRow.Value, rhs: PivotRow.Value) -> Bool {
+    public static func < (lhs: PivotRow.Value, rhs: PivotRow.Value) -> Bool {
         return lhs.count < rhs.count
     }
     
@@ -94,7 +94,7 @@ extension PivotRow.Value: Comparable {
 
 extension PivotRow: Equatable {}
 
-extension String {
+public extension String {
     static func compareAsTitle(lhs: String, rhs: String, ascending: Bool = true) -> Bool {
         if lhs == Blank.description {
             return false
@@ -110,7 +110,7 @@ extension String {
 
 extension PivotRow: Comparable {
     
-    static func < (lhs: PivotRow, rhs: PivotRow) -> Bool {
+    public static func < (lhs: PivotRow, rhs: PivotRow) -> Bool {
         return compareByTitle(lhs: lhs, rhs: rhs)
     }
     
@@ -129,7 +129,7 @@ extension PivotRow: Comparable {
     }
 }
 
-extension Array where Element == PivotRow {
+public extension Array where Element == PivotRow {
     func sortedByTitle(ascending: Bool = true) -> [Element] {
         
         let thisLevel = sorted { PivotRow.compareByTitle(lhs: $0, rhs: $1, ascending: ascending) }
@@ -153,7 +153,7 @@ extension Array where Element == PivotRow {
 
 extension PivotRow: CustomDebugStringConvertible {
     
-    var debugDescription: String {
+    public var debugDescription: String {
         
         let indent = String.init(repeating: "\t", count: level)
         let rowDescription = "\n\(indent)\(level)| \(title) : \(value), [sub:\(subRows?.count ?? 0)]"
@@ -173,7 +173,7 @@ extension PivotRow: CustomDebugStringConvertible {
     
 }
 
-extension Array where Element == PivotRow {
+public extension Array where Element == PivotRow {
     var exportDescription: String {
         return map { row -> String in
             let pipe = row.level > 0 ? "|" : ""
@@ -196,7 +196,7 @@ extension Array where Element == PivotRow {
 }
 
 
-extension Array where Element == PivotRow {
+public extension Array where Element == PivotRow {
     
     func sorted(using descriptor: BuildPivotDescriptor) -> [PivotRow] {
         switch descriptor {

@@ -8,23 +8,25 @@
 
 import Foundation
 
-class MetaTableBuilder {
+public class MetaTableBuilder {
     
     /// The source table to process
-    var source: Table?
+    public var source: Table?
     
     /// The rules to apply during processing
-    var rules: [MetaFieldRule]?
+    public var rules: [MetaFieldRule]?
     
     /// Errors emitted from the builder
-    enum Error: Swift.Error {
+    public enum Error: Swift.Error {
         
         /// Missing the source table so nothing to process
         case noSource
     }
     
+    public init() {}
+    
     /// Run the builder to process the source table with the given rules
-    func build() throws ->Table {
+    public func build() throws ->Table {
         guard let source = source else { throw Error.noSource }
         
         // If no rules then we don't need to process the source table

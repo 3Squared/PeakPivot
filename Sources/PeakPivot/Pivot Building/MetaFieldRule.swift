@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol MetaFieldRule {
+public protocol MetaFieldRule {
     
     typealias Transformation = ((FieldValue) -> FieldValue)
     
@@ -17,20 +17,20 @@ protocol MetaFieldRule {
     var transform: Transformation { get }
 }
 
-struct CustomMetaFieldRule: MetaFieldRule {
+public struct CustomMetaFieldRule: MetaFieldRule {
     
-    let sourceFieldName: FieldName
-    let destinationFieldName: String
+    public let sourceFieldName: FieldName
+    public let destinationFieldName: String
     
-    let transform: Transformation
+    public let transform: Transformation
 }
 
-struct iOSModelTypeRule: MetaFieldRule {
+public struct iOSModelTypeRule: MetaFieldRule {
     
-    let sourceFieldName: FieldValue = "Device model"
-    let destinationFieldName = "iOS Model Type*"
+    public let sourceFieldName: FieldValue = "Device model"
+    public let destinationFieldName = "iOS Model Type*"
     
-    var transform: Transformation =  { name in
+    public var transform: Transformation =  { name in
         enum DeviceType: String, CaseIterable {
             case iPad
             case iPhone
@@ -52,12 +52,12 @@ struct iOSModelTypeRule: MetaFieldRule {
     }
 }
 
-struct MajorOSVersionRule: MetaFieldRule {
+public struct MajorOSVersionRule: MetaFieldRule {
     
-    let sourceFieldName: FieldValue = "OS version"
-    let destinationFieldName = "Major OS Version*"
+    public let sourceFieldName: FieldValue = "OS version"
+    public let destinationFieldName = "Major OS Version*"
     
-    var transform: Transformation =  { name in
+    public var transform: Transformation =  { name in
        guard
         let major = name.components(separatedBy: ".").first
             else { return "Unknown" }

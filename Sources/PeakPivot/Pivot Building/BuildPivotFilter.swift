@@ -9,7 +9,7 @@
 import Foundation
 
 /// Describe how to filter a pivot by including only data matching certain fields
-struct BuildPivotFilter: Codable {
+public struct BuildPivotFilter: Codable {
     /// The field name to filter on
     let fieldName: FieldName
     

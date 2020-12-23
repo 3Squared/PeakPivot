@@ -9,43 +9,46 @@
 import Foundation
 
 /// Namespace for all the kinds of PivotBuilder
-enum PivotBuilder {
+public enum PivotBuilder {
     
     /// A user defined pivot builder
-    class Custom: BuildPivot {
-        var table: Table?
+    public class Custom: BuildPivot {
         
-        var fields: [FieldName]?
+        public var table: Table?
         
-        var percentagesEnabled = true
+        public var fields: [FieldName]?
         
-        var zeroRowsEnabled = true
+        public var percentagesEnabled = true
         
-        var sortDescriptor = BuildPivotDescriptor.byTitle(ascending: true)
+        public var zeroRowsEnabled = true
         
-        var filters: [BuildPivotFilter]?
+        public var sortDescriptor = BuildPivotDescriptor.byTitle(ascending: true)
+        
+        public var filters: [BuildPivotFilter]?
+        
+        public init() {}
     }
     
     // TODO: Add unit tests for these templates
     /// Pre-defined temapltes for building pivots
-    enum Template {
+    public enum Template {
         
-        struct CompanyByAppVersion: BuildPivot {
+        public struct CompanyByAppVersion: BuildPivot {
             
-            var table: Table? = nil
+            public var table: Table? = nil
             
-            var fields: [FieldName]? = [
+            public var fields: [FieldName]? = [
                 "Company Name",
                 "App Version"
             ]
             
-            var percentagesEnabled = true
+            public var percentagesEnabled = true
             
-            var zeroRowsEnabled = false
+            public var zeroRowsEnabled = false
             
-            var sortDescriptor = BuildPivotDescriptor.byValue(ascending: false)
+            public var sortDescriptor = BuildPivotDescriptor.byValue(ascending: false)
             
-            var filters: [BuildPivotFilter]? = [BuildPivotFilter(fieldName: "Company Name", include: [
+            public var filters: [BuildPivotFilter]? = [BuildPivotFilter(fieldName: "Company Name", include: [
                 "Colas Rail Ltd",
                 "DWS Demo",
                 "Freightliner Ltd",
