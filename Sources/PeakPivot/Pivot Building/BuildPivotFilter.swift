@@ -1,6 +1,6 @@
 //
 //  BuildPivotFilter.swift
-//  Bugfender Stats
+//  PeakPivot
 //
 //  Created by Luke Stringer on 27/05/2020.
 //  Copyright © 2020 Luke Stringer. All rights reserved.

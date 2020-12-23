@@ -1,6 +1,6 @@
 //
 //  Pivot.swift
-//  Bugfender-CSV-Viewer
+//  PeakPivot
 //
 //  Created by Luke Stringer on 12/11/2019.
 //  Copyright © 2019 3Squared Ltd. All rights reserved.

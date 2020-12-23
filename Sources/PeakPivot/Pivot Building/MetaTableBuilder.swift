@@ -1,6 +1,6 @@
 //
 //  MetaTableBuilder.swift
-//  Bugfender Stats
+//  PeakPivot
 //
 //  Created by Luke Stringer on 19/05/2020.
 //  Copyright © 2020 Luke Stringer. All rights reserved.
