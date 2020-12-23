@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UFJ-Hp-7eY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Oh5-he-csN">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -10,13 +10,13 @@
         <!--Pivot View Controller-->
         <scene sceneID="axb-b7-nik">
             <objects>
-                <tableViewController id="ruR-Ph-eqT" customClass="PivotViewController" customModule="Bugfender_Stats" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="ruR-Ph-eqT" customClass="PivotViewController" customModule="PeakPivot_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="K5M-HY-2Tt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="60" id="iZW-td-2x3" customClass="PivotTableViewCell" customModule="Bugfender_Stats" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="60" id="iZW-td-2x3" customClass="PivotTableViewCell" customModule="PeakPivot_Example" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iZW-td-2x3" id="UL2-5i-Wri">
@@ -103,12 +103,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G0q-cW-sfO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6197.1014492753629" y="-613.39285714285711"/>
+            <point key="canvasLocation" x="8017.3913043478269" y="-613.39285714285711"/>
         </scene>
         <!--Field Selection View Controller-->
         <scene sceneID="6Rn-n8-njv">
             <objects>
-                <tableViewController storyboardIdentifier="fieldSelection" id="UFJ-Hp-7eY" customClass="FieldSelectionViewController" customModule="Bugfender_Stats" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="fieldSelection" id="UFJ-Hp-7eY" customClass="FieldSelectionViewController" customModule="PeakPivot_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="QWE-pG-phE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -161,13 +161,32 @@
                             <outlet property="delegate" destination="UFJ-Hp-7eY" id="YFM-oA-gPk"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="3ZC-WB-es4"/>
                     <connections>
                         <segue destination="ruR-Ph-eqT" kind="show" identifier="showPivotFromFieldSelection" id="As6-2Q-ypk"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wt5-oE-bcH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5241" y="-613"/>
+            <point key="canvasLocation" x="7060.8695652173919" y="-613.39285714285711"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="xXh-Dq-LbS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Oh5-he-csN" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="edI-YA-vjT">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="UFJ-Hp-7eY" kind="relationship" relationship="rootViewController" id="lsM-PH-m5c"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="evh-8s-3ON" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6150.7246376811599" y="-613.39285714285711"/>
         </scene>
     </scenes>
     <resources>

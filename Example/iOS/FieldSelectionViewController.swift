@@ -24,6 +24,16 @@ class FieldSelectionViewController: UITableViewController {
     
     fileprivate var fieldNames: [String]?
     fileprivate var selectedFieldNames = [String]()
+    
+    required init?(coder: NSCoder) {
+        print("Initted")
+        super.init(coder: coder)
+    }
+    
+    override class func awakeFromNib() {
+        print("Awake from nib")
+        super.awakeFromNib()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
