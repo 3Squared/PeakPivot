@@ -3,10 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F59987C425935E410041EC9D /* PeakPivot in Frameworks */ = {isa = PBXBuildFile; productRef = F59987C325935E410041EC9D /* PeakPivot */; };
+		F59987C925935E9B0041EC9D /* FieldSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59987C825935E9B0041EC9D /* FieldSelectionViewController.swift */; };
+		F59987D525935F0A0041EC9D /* SwiftCSV in Frameworks */ = {isa = PBXBuildFile; productRef = F59987D425935F0A0041EC9D /* SwiftCSV */; };
+		F59987DB259363BD0041EC9D /* PivotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59987DA259363BD0041EC9D /* PivotViewController.swift */; };
+		F59987E1259364FE0041EC9D /* FieldValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59987DE259364FE0041EC9D /* FieldValueCell.swift */; };
+		F59987E2259364FE0041EC9D /* PivotTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59987DF259364FE0041EC9D /* PivotTableViewCell.swift */; };
+		F59987E3259364FE0041EC9D /* FieldNameHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59987E0259364FE0041EC9D /* FieldNameHeaderCell.swift */; };
 		F59A866725924A5700D65CAC /* PeakPivot_ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59A865425924A5600D65CAC /* PeakPivot_ExampleApp.swift */; };
 		F59A866825924A5700D65CAC /* PeakPivot_ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59A865425924A5600D65CAC /* PeakPivot_ExampleApp.swift */; };
 		F59A866925924A5700D65CAC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59A865525924A5600D65CAC /* ContentView.swift */; };
@@ -16,6 +23,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F59987C825935E9B0041EC9D /* FieldSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldSelectionViewController.swift; sourceTree = "<group>"; };
+		F59987DA259363BD0041EC9D /* PivotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PivotViewController.swift; sourceTree = "<group>"; };
+		F59987DE259364FE0041EC9D /* FieldValueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldValueCell.swift; sourceTree = "<group>"; };
+		F59987DF259364FE0041EC9D /* PivotTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PivotTableViewCell.swift; sourceTree = "<group>"; };
+		F59987E0259364FE0041EC9D /* FieldNameHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldNameHeaderCell.swift; sourceTree = "<group>"; };
 		F59A865425924A5600D65CAC /* PeakPivot_ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeakPivot_ExampleApp.swift; sourceTree = "<group>"; };
 		F59A865525924A5600D65CAC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F59A865625924A5700D65CAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -31,6 +43,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F59987C425935E410041EC9D /* PeakPivot in Frameworks */,
+				F59987D525935F0A0041EC9D /* SwiftCSV in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +90,11 @@
 		F59A865D25924A5700D65CAC /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				F59987C825935E9B0041EC9D /* FieldSelectionViewController.swift */,
+				F59987DA259363BD0041EC9D /* PivotViewController.swift */,
+				F59987E0259364FE0041EC9D /* FieldNameHeaderCell.swift */,
+				F59987DE259364FE0041EC9D /* FieldValueCell.swift */,
+				F59987DF259364FE0041EC9D /* PivotTableViewCell.swift */,
 				F59A865E25924A5700D65CAC /* Info.plist */,
 			);
 			path = iOS;
@@ -107,6 +126,8 @@
 			);
 			name = "PeakPivot Example (iOS)";
 			packageProductDependencies = (
+				F59987C325935E410041EC9D /* PeakPivot */,
+				F59987D425935F0A0041EC9D /* SwiftCSV */,
 			);
 			productName = "PeakPivot Example (iOS)";
 			productReference = F59A865B25924A5700D65CAC /* PeakPivot Example.app */;
@@ -156,6 +177,8 @@
 			);
 			mainGroup = F59A864E25924A5600D65CAC;
 			packageReferences = (
+				F59987C225935E410041EC9D /* XCRemoteSwiftPackageReference "." */,
+				F59987D325935F0A0041EC9D /* XCRemoteSwiftPackageReference "SwiftCSV" */,
 			);
 			productRefGroup = F59A865C25924A5700D65CAC /* Products */;
 			projectDirPath = "";
@@ -191,6 +214,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F59987E1259364FE0041EC9D /* FieldValueCell.swift in Sources */,
+				F59987C925935E9B0041EC9D /* FieldSelectionViewController.swift in Sources */,
+				F59987E3259364FE0041EC9D /* FieldNameHeaderCell.swift in Sources */,
+				F59987E2259364FE0041EC9D /* PivotTableViewCell.swift in Sources */,
+				F59987DB259363BD0041EC9D /* PivotViewController.swift in Sources */,
 				F59A866925924A5700D65CAC /* ContentView.swift in Sources */,
 				F59A866725924A5700D65CAC /* PeakPivot_ExampleApp.swift in Sources */,
 			);
@@ -437,6 +465,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F59987C225935E410041EC9D /* XCRemoteSwiftPackageReference "." */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = ../;
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		F59987D325935F0A0041EC9D /* XCRemoteSwiftPackageReference "SwiftCSV" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:swiftcsv/SwiftCSV.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F59987C325935E410041EC9D /* PeakPivot */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F59987C225935E410041EC9D /* XCRemoteSwiftPackageReference "." */;
+			productName = PeakPivot;
+		};
+		F59987D425935F0A0041EC9D /* SwiftCSV */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F59987D325935F0A0041EC9D /* XCRemoteSwiftPackageReference "SwiftCSV" */;
+			productName = SwiftCSV;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F59A864F25924A5600D65CAC /* Project object */;
 }

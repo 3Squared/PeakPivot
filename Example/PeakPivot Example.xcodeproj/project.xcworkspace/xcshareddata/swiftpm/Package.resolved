@@ -3,11 +3,20 @@
     "pins": [
       {
         "package": "PeakPivot",
-        "repositoryURL": "git@github.com:3squared/PeakPivot.git",
+        "repositoryURL": "/Users/lukestringer/Dropbox/Developer/PeakPivot",
         "state": {
           "branch": "main",
-          "revision": "dda0526abd592f052d619dd5f38948a5ccead56e",
+          "revision": "2555cf77028f5f8e6ed1c8c88b73db3d79097ab9",
           "version": null
+        }
+      },
+      {
+        "package": "SwiftCSV",
+        "repositoryURL": "git@github.com:swiftcsv/SwiftCSV.git",
+        "state": {
+          "branch": null,
+          "revision": "ad2042d0ba2ea260246b0e1b1d5710cbc53e2836",
+          "version": "0.6.0"
         }
       }
     ]

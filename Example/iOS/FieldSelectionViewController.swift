@@ -7,13 +7,11 @@
 //
 
 import UIKit
+import PeakPivot
 import SwiftCSV
-import CoreData
-import PeakCoreData
 
-class FieldSelectionViewController: UITableViewController, PersistentContainerSettable {
+class FieldSelectionViewController: UITableViewController {
     
-    var app: App!
     var csv: CSV! {
         didSet {
             guard let csvHeaders = csv?.header else { return }
@@ -23,7 +21,6 @@ class FieldSelectionViewController: UITableViewController, PersistentContainerSe
         }
     }
     var metaFieldRules: [MetaFieldRule] = []
-    var persistentContainer: NSPersistentContainer!
     
     fileprivate var fieldNames: [String]?
     fileprivate var selectedFieldNames = [String]()
@@ -66,10 +63,6 @@ extension FieldSelectionViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        defer {
-            segue.setDestinations(persistentContainer: persistentContainer)
-        }
-        
         guard let pivotViewController = segue.destination as? PivotViewController else {
             fatalError("Cannot get Pivot View Controller from destination segue")
         }
@@ -84,7 +77,6 @@ extension FieldSelectionViewController {
         pivotViewController.dataSource = .fields(fieldNames: sortedSelectedFieldNames)
         pivotViewController.metaFieldRules = metaFieldRules
         pivotViewController.csv = csv
-        pivotViewController.app = app
     }
 }
 
@@ -166,15 +158,8 @@ extension FieldSelectionViewController {
 fileprivate extension FieldSelectionViewController {
     func generateFieldNames(usingHeaders headers: [String]) -> [String] {
         
-        var headersCopy = headers
-        
-        let settings = Settings.fetchSingleton(in: persistentContainer.viewContext)
-        if !settings.oldBugfenderValuesEnabled {
-            headersCopy.removeAll { OldBugfenderDeviceKeys.contains($0) }
-        }
-        
         let metaRuleFieldNames = metaFieldRules.map { $0.destinationFieldName }
-        let allFields = metaRuleFieldNames + headersCopy
+        let allFields = metaRuleFieldNames + headers
         
         return allFields.sorted { $0.lowercased() < $1.lowercased() }
     }
