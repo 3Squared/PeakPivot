@@ -1,6 +1,6 @@
 //
 //  PivotViewController.swift
-//  
+//  PeakPivot Example
 //
 //  Created by Luke Stringer on 31/12/2019.
 //

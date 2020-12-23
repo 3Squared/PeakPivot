@@ -1,6 +1,6 @@
 //
 //  FieldSelectionViewController.swift
-//  Bugfender-CSV-Viewer
+//  PeakPivot Example
 //
 //  Created by Luke Stringer on 31/12/2019.
 //  Copyright © 2019 3Squared Ltd. All rights reserved.
@@ -24,19 +24,17 @@ class FieldSelectionViewController: UITableViewController {
     
     fileprivate var fieldNames: [String]?
     fileprivate var selectedFieldNames = [String]()
-    
-    required init?(coder: NSCoder) {
-        print("Initted")
-        super.init(coder: coder)
-    }
-    
-    override class func awakeFromNib() {
-        print("Awake from nib")
-        super.awakeFromNib()
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        guard let csv = try? CSV(name: "people.csv") else {
+            fatalError("Could not load CSV")
+        }
+        
+        self.csv = csv
+        
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Field Names", style: .plain, target: nil, action: nil)
         tableView.isEditing = true
         

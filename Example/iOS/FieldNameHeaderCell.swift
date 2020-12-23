@@ -1,6 +1,6 @@
 //
 //  FieldNameHeaderCell.swift
-//  Bugfender-CSV-Viewer
+//  PeakPivot Example
 //
 //  Created by Luke Stringer on 03/01/2020.
 //  Copyright © 2020 3Squared Ltd. All rights reserved.

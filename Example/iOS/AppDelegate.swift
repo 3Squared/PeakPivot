@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  PeakPivot Example (iOS)
+//  PeakPivot Example
 //
 //  Created by Luke Stringer on 23/12/2020.
 //

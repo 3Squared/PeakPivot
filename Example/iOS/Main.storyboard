@@ -105,7 +105,7 @@
             </objects>
             <point key="canvasLocation" x="8017.3913043478269" y="-613.39285714285711"/>
         </scene>
-        <!--Field Selection View Controller-->
+        <!--Select Fields-->
         <scene sceneID="6Rn-n8-njv">
             <objects>
                 <tableViewController storyboardIdentifier="fieldSelection" id="UFJ-Hp-7eY" customClass="FieldSelectionViewController" customModule="PeakPivot_Example" customModuleProvider="target" sceneMemberID="viewController">
@@ -161,10 +161,13 @@
                             <outlet property="delegate" destination="UFJ-Hp-7eY" id="YFM-oA-gPk"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="3ZC-WB-es4"/>
-                    <connections>
-                        <segue destination="ruR-Ph-eqT" kind="show" identifier="showPivotFromFieldSelection" id="As6-2Q-ypk"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="Select Fields" id="3ZC-WB-es4">
+                        <barButtonItem key="rightBarButtonItem" title="Pivot" style="done" id="vSj-e0-CIB">
+                            <connections>
+                                <segue destination="ruR-Ph-eqT" kind="show" identifier="showPivotFromFieldSelection" id="0NE-RB-xWd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wt5-oE-bcH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
