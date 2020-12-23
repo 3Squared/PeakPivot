@@ -17,6 +17,11 @@
 		F59987F7259367880041EC9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F59987F6259367880041EC9D /* Main.storyboard */; };
 		F59987FF259367CA0041EC9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59987FE259367CA0041EC9D /* AppDelegate.swift */; };
 		F599880F25937D010041EC9D /* people.csv in Resources */ = {isa = PBXBuildFile; fileRef = F599880E25937D010041EC9D /* people.csv */; };
+		F599882025937F180041EC9D /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F599881B25937F180041EC9D /* ConfigViewController.swift */; };
+		F599882125937F180041EC9D /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F599881C25937F180041EC9D /* OptionsViewController.swift */; };
+		F599882225937F180041EC9D /* FilterViewController+Logic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F599881D25937F180041EC9D /* FilterViewController+Logic.swift */; };
+		F599882325937F180041EC9D /* SortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F599881E25937F180041EC9D /* SortViewController.swift */; };
+		F599882425937F180041EC9D /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F599881F25937F180041EC9D /* FilterViewController.swift */; };
 		F59A866B25924A5700D65CAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F59A865625924A5700D65CAC /* Assets.xcassets */; };
 		F59A866C25924A5700D65CAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F59A865625924A5700D65CAC /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -30,6 +35,11 @@
 		F59987F6259367880041EC9D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		F59987FE259367CA0041EC9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F599880E25937D010041EC9D /* people.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = people.csv; path = "../../../../../Library/Developer/Xcode/DerivedData/PeakPivot_Example-edwrsuvhjvvvbdbtflqvzcqjwhrx/SourcePackages/checkouts/PeakPivot/Tests/Resources/people.csv"; sourceTree = "<group>"; };
+		F599881B25937F180041EC9D /* ConfigViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
+		F599881C25937F180041EC9D /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
+		F599881D25937F180041EC9D /* FilterViewController+Logic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FilterViewController+Logic.swift"; sourceTree = "<group>"; };
+		F599881E25937F180041EC9D /* SortViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortViewController.swift; sourceTree = "<group>"; };
+		F599881F25937F180041EC9D /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		F59A865625924A5700D65CAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F59A865B25924A5700D65CAC /* PeakPivot Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PeakPivot Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F59A865E25924A5700D65CAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -58,6 +68,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F599881A25937F180041EC9D /* Options */ = {
+			isa = PBXGroup;
+			children = (
+				F599881B25937F180041EC9D /* ConfigViewController.swift */,
+				F599881C25937F180041EC9D /* OptionsViewController.swift */,
+				F599881D25937F180041EC9D /* FilterViewController+Logic.swift */,
+				F599881E25937F180041EC9D /* SortViewController.swift */,
+				F599881F25937F180041EC9D /* FilterViewController.swift */,
+			);
+			path = Options;
+			sourceTree = "<group>";
+		};
+		F599882B259383A40041EC9D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F59987E0259364FE0041EC9D /* FieldNameHeaderCell.swift */,
+				F59987DE259364FE0041EC9D /* FieldValueCell.swift */,
+				F59987DF259364FE0041EC9D /* PivotTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F599882E259383AC0041EC9D /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F59987C825935E9B0041EC9D /* FieldSelectionViewController.swift */,
+				F59987DA259363BD0041EC9D /* PivotViewController.swift */,
+				F599881A25937F180041EC9D /* Options */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
 		F59A864E25924A5600D65CAC = {
 			isa = PBXGroup;
 			children = (
@@ -88,12 +130,9 @@
 		F59A865D25924A5700D65CAC /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				F59987C825935E9B0041EC9D /* FieldSelectionViewController.swift */,
+				F599882E259383AC0041EC9D /* View Controllers */,
 				F59987FE259367CA0041EC9D /* AppDelegate.swift */,
-				F59987DA259363BD0041EC9D /* PivotViewController.swift */,
-				F59987E0259364FE0041EC9D /* FieldNameHeaderCell.swift */,
-				F59987DE259364FE0041EC9D /* FieldValueCell.swift */,
-				F59987DF259364FE0041EC9D /* PivotTableViewCell.swift */,
+				F599882B259383A40041EC9D /* Views */,
 				F59987F6259367880041EC9D /* Main.storyboard */,
 				F599880E25937D010041EC9D /* people.csv */,
 				F59A865E25924A5700D65CAC /* Info.plist */,
@@ -217,10 +256,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F599882325937F180041EC9D /* SortViewController.swift in Sources */,
 				F59987FF259367CA0041EC9D /* AppDelegate.swift in Sources */,
+				F599882125937F180041EC9D /* OptionsViewController.swift in Sources */,
+				F599882225937F180041EC9D /* FilterViewController+Logic.swift in Sources */,
 				F59987E1259364FE0041EC9D /* FieldValueCell.swift in Sources */,
+				F599882425937F180041EC9D /* FilterViewController.swift in Sources */,
 				F59987C925935E9B0041EC9D /* FieldSelectionViewController.swift in Sources */,
 				F59987E3259364FE0041EC9D /* FieldNameHeaderCell.swift in Sources */,
+				F599882025937F180041EC9D /* ConfigViewController.swift in Sources */,
 				F59987E2259364FE0041EC9D /* PivotTableViewCell.swift in Sources */,
 				F59987DB259363BD0041EC9D /* PivotViewController.swift in Sources */,
 			);

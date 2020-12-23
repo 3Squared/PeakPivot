@@ -78,13 +78,12 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem title="Options" id="4V8-7t-dU0"/>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="27I-Bv-phc"/>
-                        <barButtonItem title="Save" id="hwd-X1-cM2">
+                        <barButtonItem title="Options" id="4V8-7t-dU0">
                             <connections>
-                                <action selector="saveTapped:" destination="ruR-Ph-eqT" id="yz1-YG-FSL"/>
+                                <segue destination="bGc-VG-KG3" kind="presentation" identifier="options" id="d3V-q6-y2J"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="27I-Bv-phc"/>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="xk7-vo-hoI"/>
                         <barButtonItem title="Graphs" id="zxj-XA-HFQ"/>
                     </toolbarItems>
@@ -103,7 +102,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G0q-cW-sfO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8017.3913043478269" y="-613.39285714285711"/>
+            <point key="canvasLocation" x="6196" y="-613"/>
         </scene>
         <!--Select Fields-->
         <scene sceneID="6Rn-n8-njv">
@@ -171,7 +170,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wt5-oE-bcH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7060.8695652173919" y="-613.39285714285711"/>
+            <point key="canvasLocation" x="5497" y="-613"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xXh-Dq-LbS">
@@ -189,10 +188,271 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="evh-8s-3ON" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6150.7246376811599" y="-613.39285714285711"/>
+            <point key="canvasLocation" x="4809" y="-613"/>
+        </scene>
+        <!--Options View Controller-->
+        <scene sceneID="ksq-Zl-OsA">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="1j6-3z-7ov" customClass="OptionsViewController" customModule="Bugfender_Stats" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Wez-pO-cDL">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="g6w-dq-wSy">
+                            <connections>
+                                <action selector="cancellTapped:" destination="1j6-3z-7ov" id="sR8-rn-4S5"/>
+                            </connections>
+                        </barButtonItem>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="QHG-cJ-3Zh">
+                            <rect key="frame" x="92.5" y="11.5" width="229" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Filter" width="80"/>
+                                <segment title="Sort" width="80"/>
+                                <segment title="Config"/>
+                            </segments>
+                            <connections>
+                                <action selector="segmentedControlValueChanged:" destination="1j6-3z-7ov" eventType="valueChanged" id="vkr-cB-r5z"/>
+                            </connections>
+                        </segmentedControl>
+                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="nxg-Cj-epY">
+                            <connections>
+                                <action selector="applyTapped:" destination="1j6-3z-7ov" id="IuJ-xO-Gt0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="segmentedControl" destination="QHG-cJ-3Zh" id="f2c-Sl-8J7"/>
+                        <segue destination="kRa-uR-3zc" kind="unwind" identifier="unwindToPivot" unwindAction="unwindToPivot:" id="UBG-he-ZNF"/>
+                    </connections>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H3M-Xv-Qg0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="kRa-uR-3zc" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="7042.0289855072469" y="122.54464285714285"/>
+        </scene>
+        <!--Filter Fields-->
+        <scene sceneID="biG-M9-eqW">
+            <objects>
+                <tableViewController storyboardIdentifier="filter" id="Een-jX-IjQ" customClass="FilterViewController" customModule="Bugfender_Stats" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hKQ-IP-aAR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="value" id="jOj-tl-YB4" customClass="FieldValueCell" customModule="Bugfender_Stats" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jOj-tl-YB4" id="p9K-mB-NWH">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="selectAll" textLabel="wys-y7-VI1" style="IBUITableViewCellStyleDefault" id="Dvg-a0-UPb" customClass="FieldValueCell" customModule="Bugfender_Stats" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="71.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dvg-a0-UPb" id="yOZ-OC-ZLk">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="SELECT ALL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wys-y7-VI1">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="header" id="SQB-QH-w8X" customClass="FieldNameHeaderCell" customModule="Bugfender_Stats" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="115" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SQB-QH-w8X" id="usH-2D-ii8">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rb7-1Y-i4H">
+                                            <rect key="frame" x="20" y="11.5" width="43.5" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="IZw-MF-xIE"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="leadingMargin" secondItem="rb7-1Y-i4H" secondAttribute="leading" id="Zdc-hh-2Tt"/>
+                                        <constraint firstItem="rb7-1Y-i4H" firstAttribute="centerY" secondItem="usH-2D-ii8" secondAttribute="centerY" id="c7t-l7-vw9"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="rb7-1Y-i4H" id="t9J-R4-WQA"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Een-jX-IjQ" id="1JI-0J-5rW"/>
+                            <outlet property="delegate" destination="Een-jX-IjQ" id="hGr-wP-SlV"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Filter Fields" id="ZMz-tH-iut">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="aUZ-M4-GPu">
+                            <connections>
+                                <action selector="cancellTapped:" destination="Een-jX-IjQ" id="mKd-VO-K7h"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Apply" style="done" id="9lU-js-9hY">
+                            <connections>
+                                <action selector="applyTapped:" destination="Een-jX-IjQ" id="wWe-Qs-GcH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="qkn-VP-IF2" kind="unwind" identifier="unwindToPivot" unwindAction="unwindToPivot:" id="kMM-aV-BMI"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6DL-4O-kmN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="qkn-VP-IF2" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="6197" y="869"/>
+        </scene>
+        <!--Sort-->
+        <scene sceneID="TuX-8t-jXK">
+            <objects>
+                <tableViewController storyboardIdentifier="sort" id="rxd-k3-qKI" customClass="SortViewController" customModule="Bugfender_Stats" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Oun-Vy-Irl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="sortCell" textLabel="No9-I5-Tyt" style="IBUITableViewCellStyleDefault" id="QU5-N7-Ck1">
+                                <rect key="frame" x="20" y="55.5" width="374" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QU5-N7-Ck1" id="mNn-Gv-TXQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Sort Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="No9-I5-Tyt">
+                                            <rect key="frame" x="20" y="0.0" width="334" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="rxd-k3-qKI" id="xXm-Zy-W8X"/>
+                            <outlet property="delegate" destination="rxd-k3-qKI" id="gs0-Rb-OYb"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Sort" id="oaR-gw-pQc">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="XZp-at-avS">
+                            <connections>
+                                <segue destination="ODk-bB-CTd" kind="unwind" identifier="unwindToPivot" unwindAction="unwindToPivot:" id="wqN-IP-hRB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K7P-eh-5Gw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="ODk-bB-CTd" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="7091" y="869"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="nCZ-B2-6fs">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bGc-VG-KG3" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="bUI-FC-iWV"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="svU-WF-fd6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1j6-3z-7ov" kind="relationship" relationship="rootViewController" id="bDv-ul-6ho"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sLB-WV-47z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6197.1014492753629" y="122.54464285714285"/>
+        </scene>
+        <!--Config-->
+        <scene sceneID="SDS-Hr-IHa">
+            <objects>
+                <tableViewController storyboardIdentifier="config" title="Config" id="ScD-9c-aon" customClass="ConfigViewController" customModule="Bugfender_Stats" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="4JI-xi-3d1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <sections>
+                            <tableViewSection id="tV6-9W-PCj">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="KTL-jX-wzb">
+                                        <rect key="frame" x="20" y="18" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KTL-jX-wzb" id="kkT-8r-oET">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Zero Counts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxb-S4-NO7">
+                                                    <rect key="frame" x="20" y="11.5" width="140.5" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="Zqw-0r-5hr"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="137" id="b7E-Vl-4GZ"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AAr-BH-8hh">
+                                                    <rect key="frame" x="305" y="6.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="showZerosValueChanged:" destination="ScD-9c-aon" eventType="valueChanged" id="Dt7-K6-ntx"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hxb-S4-NO7" secondAttribute="trailing" constant="20" symbolic="YES" id="Tma-Dx-MW3"/>
+                                                <constraint firstItem="AAr-BH-8hh" firstAttribute="centerY" secondItem="kkT-8r-oET" secondAttribute="centerY" id="i7k-L4-Iqc"/>
+                                                <constraint firstAttribute="trailing" secondItem="AAr-BH-8hh" secondAttribute="trailing" constant="20" id="mps-ZT-fkB"/>
+                                                <constraint firstItem="hxb-S4-NO7" firstAttribute="leading" secondItem="kkT-8r-oET" secondAttribute="leading" constant="20" id="tHA-hi-HpV"/>
+                                                <constraint firstItem="hxb-S4-NO7" firstAttribute="centerY" secondItem="kkT-8r-oET" secondAttribute="centerY" id="ucq-LJ-R1g"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="ScD-9c-aon" id="Gr2-lR-Rb7"/>
+                            <outlet property="delegate" destination="ScD-9c-aon" id="Mao-nm-b1I"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Sort" id="lYj-uU-rxr">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="wt6-Ta-Dja">
+                            <connections>
+                                <segue destination="qrU-e1-VlJ" kind="unwind" identifier="unwindToPivot" unwindAction="unwindToPivot:" id="2yY-TB-JSx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="showZeroCountsSwitch" destination="AAr-BH-8hh" id="dss-zr-bc0"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qFN-1J-TT3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="qrU-e1-VlJ" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="7941" y="869"/>
         </scene>
     </scenes>
     <resources>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

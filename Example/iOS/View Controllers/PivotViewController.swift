@@ -125,9 +125,9 @@ extension PivotViewController {
     
     override internal func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-//        switch segue.identifier {
-//
-//        case "charts":
+        switch segue.identifier {
+
+        case "charts":
 //            if let chartViewController = segue.destination as? ChartViewController {
 //                chartViewController.app = app
 //                chartViewController.rows = pivotRows
@@ -138,32 +138,33 @@ extension PivotViewController {
 //                    .reversed()
 //                chartViewController.fieldName = builder.fields?.first
 //            }
-//
-//        case "options":
-//            guard
-//                let navController = segue.destination as? UINavigationController,
-//                let optionsVC = navController.topViewController as? OptionsViewController else { return }
-//            optionsVC.filters = builder.filters
-//            optionsVC.fields = pivot.filterFields
-//            optionsVC.selectedSortDescriptor = builder.sortDescriptor
-//            optionsVC.zeroRowsEnabled = builder.zeroRowsEnabled
-//
-//            navController.modalPresentationStyle = .popover
-//            navController.popoverPresentationController?.barButtonItem = optionsButton
-//
-//        default:
-//            return
-//        }
+        break
+
+        case "options":
+            guard
+                let navController = segue.destination as? UINavigationController,
+                let optionsVC = navController.topViewController as? OptionsViewController else { return }
+            optionsVC.filters = builder.filters
+            optionsVC.fields = pivot.filterFields
+            optionsVC.selectedSortDescriptor = builder.sortDescriptor
+            optionsVC.zeroRowsEnabled = builder.zeroRowsEnabled
+
+            navController.modalPresentationStyle = .popover
+            navController.popoverPresentationController?.barButtonItem = optionsButton
+
+        default:
+            return
+        }
     }
     
     
     @IBAction func unwindToPivot(_ unwindSegue: UIStoryboardSegue) {
         
-//        guard let optionsVC = unwindSegue.source as? OptionsViewController else { return }
+        guard let optionsVC = unwindSegue.source as? OptionsViewController else { return }
         
-//        builder.filters = optionsVC.filters
-//        optionsVC.zeroRowsEnabled.flatMap { builder.zeroRowsEnabled = $0 }
-//        optionsVC.selectedSortDescriptor.flatMap { builder.sortDescriptor = $0 }
+        builder.filters = optionsVC.filters
+        optionsVC.zeroRowsEnabled.flatMap { builder.zeroRowsEnabled = $0 }
+        optionsVC.selectedSortDescriptor.flatMap { builder.sortDescriptor = $0 }
         runBuilder()
     }
     
