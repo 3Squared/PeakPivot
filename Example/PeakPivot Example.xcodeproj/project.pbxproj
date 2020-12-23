@@ -106,6 +106,8 @@
 			dependencies = (
 			);
 			name = "PeakPivot Example (iOS)";
+			packageProductDependencies = (
+			);
 			productName = "PeakPivot Example (iOS)";
 			productReference = F59A865B25924A5700D65CAC /* PeakPivot Example.app */;
 			productType = "com.apple.product-type.application";
@@ -153,6 +155,8 @@
 				Base,
 			);
 			mainGroup = F59A864E25924A5600D65CAC;
+			packageReferences = (
+			);
 			productRefGroup = F59A865C25924A5700D65CAC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
