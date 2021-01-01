@@ -12,7 +12,7 @@ import Foundation
 public enum PivotBuilder {
     
     /// A user defined pivot builder
-    public class Custom: BuildPivot {
+    open class Custom: BuildPivot {
         
         public var table: Table?
         
