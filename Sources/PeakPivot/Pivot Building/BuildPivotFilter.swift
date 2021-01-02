@@ -21,3 +21,5 @@ public struct BuildPivotFilter {
         self.include = include
     }
 }
+
+extension BuildPivotFilter: Equatable {}
