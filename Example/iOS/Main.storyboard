@@ -78,20 +78,11 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem title="Options" id="4V8-7t-dU0">
-                            <connections>
-                                <segue destination="bGc-VG-KG3" kind="presentation" identifier="options" id="d3V-q6-y2J"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="27I-Bv-phc"/>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="xk7-vo-hoI"/>
-                        <barButtonItem title="Graphs" id="zxj-XA-HFQ"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="JMK-Zq-0Ee"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="optionsButton" destination="4V8-7t-dU0" id="V3H-JI-gPx"/>
-                    </connections>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G0q-cW-sfO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -182,45 +173,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="evh-8s-3ON" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4809" y="-613"/>
-        </scene>
-        <!--Options View Controller-->
-        <scene sceneID="ksq-Zl-OsA">
-            <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="1j6-3z-7ov" customClass="OptionsViewController" customModule="PeakPivot_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="Wez-pO-cDL">
-                        <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="g6w-dq-wSy">
-                            <connections>
-                                <action selector="cancellTapped:" destination="1j6-3z-7ov" id="sR8-rn-4S5"/>
-                            </connections>
-                        </barButtonItem>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="QHG-cJ-3Zh">
-                            <rect key="frame" x="92.5" y="11.5" width="229" height="33"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title="Filter" width="80"/>
-                                <segment title="Sort" width="80"/>
-                                <segment title="Config"/>
-                            </segments>
-                            <connections>
-                                <action selector="segmentedControlValueChanged:" destination="1j6-3z-7ov" eventType="valueChanged" id="vkr-cB-r5z"/>
-                            </connections>
-                        </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="nxg-Cj-epY">
-                            <connections>
-                                <action selector="applyTapped:" destination="1j6-3z-7ov" id="IuJ-xO-Gt0"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="segmentedControl" destination="QHG-cJ-3Zh" id="f2c-Sl-8J7"/>
-                        <segue destination="kRa-uR-3zc" kind="unwind" identifier="unwindToPivot" unwindAction="unwindToPivot:" id="UBG-he-ZNF"/>
-                    </connections>
-                </pageViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="H3M-Xv-Qg0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="kRa-uR-3zc" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="7042.0289855072469" y="122.54464285714285"/>
         </scene>
         <!--Filter Fields-->
         <scene sceneID="biG-M9-eqW">
@@ -354,25 +306,6 @@
                 <exit id="ODk-bB-CTd" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="7091" y="869"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="nCZ-B2-6fs">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bGc-VG-KG3" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="bUI-FC-iWV"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="svU-WF-fd6">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="1j6-3z-7ov" kind="relationship" relationship="rootViewController" id="bDv-ul-6ho"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sLB-WV-47z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6197.1014492753629" y="122.54464285714285"/>
         </scene>
         <!--Config-->
         <scene sceneID="SDS-Hr-IHa">

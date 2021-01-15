@@ -47,8 +47,6 @@ class PivotViewController: UITableViewController {
             builder.sortDescriptor = BuildPivotDescriptor.byTitle(ascending: true)
         }
         
-        // We'll only have a CSV if coming from an app selection
-        // We won't have a CSV if we come from history, instead a builder with a table will be supplied instead
         if let table = csv?.namedRows {
             
             // If we have meta rules then generate an augmented table containing them
@@ -69,16 +67,7 @@ class PivotViewController: UITableViewController {
         runBuilder(reload: false)
         
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setToolbarHidden(false, animated: true)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setToolbarHidden(true, animated: true)
-    }
+
     
 }
 
@@ -122,51 +111,6 @@ extension PivotViewController {
 
 // MARK: - Actions and segues
 extension PivotViewController {
-    
-    override internal func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        switch segue.identifier {
-
-        case "charts":
-//            if let chartViewController = segue.destination as? ChartViewController {
-//                chartViewController.app = app
-//                chartViewController.rows = pivotRows
-//                    // Only use the top level rows
-//                    .filter { $0.level == 0 }
-//                    // Reverse so chart and table view look same
-//                    // Chart will plot from bottom to top, whereas table plots from top to bottom
-//                    .reversed()
-//                chartViewController.fieldName = builder.fields?.first
-//            }
-        break
-
-        case "options":
-            guard
-                let navController = segue.destination as? UINavigationController,
-                let optionsVC = navController.topViewController as? OptionsViewController else { return }
-            optionsVC.filters = builder.filters
-            optionsVC.fields = pivot.filterFields
-            optionsVC.selectedSortDescriptor = builder.sortDescriptor
-            optionsVC.zeroRowsEnabled = builder.zeroRowsEnabled
-
-            navController.modalPresentationStyle = .popover
-            navController.popoverPresentationController?.barButtonItem = optionsButton
-
-        default:
-            return
-        }
-    }
-    
-    
-    @IBAction func unwindToPivot(_ unwindSegue: UIStoryboardSegue) {
-        
-        guard let optionsVC = unwindSegue.source as? OptionsViewController else { return }
-        
-        builder.filters = optionsVC.filters
-        optionsVC.zeroRowsEnabled.flatMap { builder.zeroRowsEnabled = $0 }
-        optionsVC.selectedSortDescriptor.flatMap { builder.sortDescriptor = $0 }
-        runBuilder()
-    }
 
 }
 
