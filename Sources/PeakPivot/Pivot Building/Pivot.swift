@@ -66,22 +66,6 @@ extension FilterField: CustomDebugStringConvertible {
     }
 }
 
-public extension Array where Element == PivotRow {
-    func flatten() -> [PivotRow] {
-        return compactMap { flattenRow($0) }.flatMap { $0 }
-    }
-    
-    private func flattenRow(_ row: PivotRow) -> [PivotRow]? {
-        let rowWithoutSubRows = PivotRow(level: row.level, title: row.title, value: row.value, subRows: nil)
-        guard let subRows = row.subRows, subRows.count > 0 else {
-            return [rowWithoutSubRows]
-        }
-        
-        let flattenedSubRows = subRows.compactMap { flattenRow($0) }.flatMap { $0 }
-        return [rowWithoutSubRows] + flattenedSubRows
-    }
-}
-
 extension PivotRow.Value: Equatable { }
 
 extension PivotRow.Value: Comparable {

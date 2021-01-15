@@ -257,3 +257,18 @@ fileprivate extension PivotViewController {
         }
     }
 }
+
+extension Array where Element == PivotRow {
+    func flatten() -> [PivotRow] {
+        return compactMap { flattenRow($0) }.flatMap { $0 }
+    }
+    
+    private func flattenRow(_ row: PivotRow) -> [PivotRow]? {
+        guard let subRows = row.subRows, subRows.count > 0 else {
+            return [row]
+        }
+        
+        let flattenedSubRows = subRows.compactMap { flattenRow($0) }.flatMap { $0 }
+        return [row] + flattenedSubRows
+    }
+}
