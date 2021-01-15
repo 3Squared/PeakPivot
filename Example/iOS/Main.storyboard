@@ -87,16 +87,9 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="xk7-vo-hoI"/>
                         <barButtonItem title="Graphs" id="zxj-XA-HFQ"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" id="JMK-Zq-0Ee">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="Hme-du-Pmf">
-                            <connections>
-                                <action selector="exportTapped:" destination="ruR-Ph-eqT" id="yoH-QP-M8D"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="JMK-Zq-0Ee"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="exportButton" destination="Hme-du-Pmf" id="XyC-nQ-eWc"/>
                         <outlet property="optionsButton" destination="4V8-7t-dU0" id="V3H-JI-gPx"/>
                     </connections>
                 </tableViewController>
@@ -193,7 +186,7 @@
         <!--Options View Controller-->
         <scene sceneID="ksq-Zl-OsA">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="1j6-3z-7ov" customClass="OptionsViewController" customModule="Bugfender_Stats" customModuleProvider="target" sceneMemberID="viewController">
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="1j6-3z-7ov" customClass="OptionsViewController" customModule="PeakPivot_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Wez-pO-cDL">
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="g6w-dq-wSy">
@@ -232,13 +225,13 @@
         <!--Filter Fields-->
         <scene sceneID="biG-M9-eqW">
             <objects>
-                <tableViewController storyboardIdentifier="filter" id="Een-jX-IjQ" customClass="FilterViewController" customModule="Bugfender_Stats" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="filter" id="Een-jX-IjQ" customClass="FilterViewController" customModule="PeakPivot_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hKQ-IP-aAR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="value" id="jOj-tl-YB4" customClass="FieldValueCell" customModule="Bugfender_Stats" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="value" id="jOj-tl-YB4" customClass="FieldValueCell" customModule="PeakPivot_Example" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jOj-tl-YB4" id="p9K-mB-NWH">
@@ -246,7 +239,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="selectAll" textLabel="wys-y7-VI1" style="IBUITableViewCellStyleDefault" id="Dvg-a0-UPb" customClass="FieldValueCell" customModule="Bugfender_Stats" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="selectAll" textLabel="wys-y7-VI1" style="IBUITableViewCellStyleDefault" id="Dvg-a0-UPb" customClass="FieldValueCell" customModule="PeakPivot_Example" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="71.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dvg-a0-UPb" id="yOZ-OC-ZLk">
@@ -263,7 +256,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="header" id="SQB-QH-w8X" customClass="FieldNameHeaderCell" customModule="Bugfender_Stats" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="header" id="SQB-QH-w8X" customClass="FieldNameHeaderCell" customModule="PeakPivot_Example" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="115" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SQB-QH-w8X" id="usH-2D-ii8">
@@ -320,7 +313,7 @@
         <!--Sort-->
         <scene sceneID="TuX-8t-jXK">
             <objects>
-                <tableViewController storyboardIdentifier="sort" id="rxd-k3-qKI" customClass="SortViewController" customModule="Bugfender_Stats" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="sort" id="rxd-k3-qKI" customClass="SortViewController" customModule="PeakPivot_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Oun-Vy-Irl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -384,7 +377,7 @@
         <!--Config-->
         <scene sceneID="SDS-Hr-IHa">
             <objects>
-                <tableViewController storyboardIdentifier="config" title="Config" id="ScD-9c-aon" customClass="ConfigViewController" customModule="Bugfender_Stats" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="config" title="Config" id="ScD-9c-aon" customClass="ConfigViewController" customModule="PeakPivot_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="4JI-xi-3d1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
