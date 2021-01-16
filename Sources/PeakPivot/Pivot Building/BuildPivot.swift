@@ -41,44 +41,44 @@ public enum BuildPivotError: Error {
 }
 
 public extension BuildPivot {
-
+    
     func build() throws -> Pivot {
         guard let table = table else {
-                throw BuildPivotError.noTable
-            }
-            
-            guard let fields = fields else {
-                throw BuildPivotError.noFields
-            }
-            
-            // Replace any empty strings
-            let tableWithBlanks = replaceEmptyStrings(in: table)
-            
-            // Generate PivotRows without percentages
-            guard let rowsWithoutPercentages = generatePivotRows(from: tableWithBlanks, fieldNames: fields, level: 0) else {
-                throw BuildPivotError.noOutput
-            }
-            
-            
-            // Sum up counts for all top level rows to get the overall total
-            let total = rowsWithoutPercentages.filter { $0.level == 0 }.reduce(0, {$0 + $1.value.count})
-            
-            let rows: [PivotRow] = {
-                
-                guard percentagesEnabled else { return rowsWithoutPercentages }
-                
-                // Add percentages
-                return generatePivotRowsWithPercentages(for: rowsWithoutPercentages, total: total)
-            }()
-            
+            throw BuildPivotError.noTable
+        }
         
-            // Sort
-            let sorted = rows.sorted(using: sortDescriptor)
+        guard let fields = fields else {
+            throw BuildPivotError.noFields
+        }
+        
+        // Replace any empty strings
+        let tableWithBlanks = replaceEmptyStrings(in: table)
+        
+        // Generate PivotRows without percentages
+        guard let rowsWithoutPercentages = generatePivotRows(from: tableWithBlanks, fieldNames: fields, level: 0) else {
+            throw BuildPivotError.noOutput
+        }
+        
+        
+        // Sum up counts for all top level rows to get the overall total
+        let total = rowsWithoutPercentages.filter { $0.level == 0 }.reduce(0, {$0 + $1.value.count})
+        
+        let rows: [PivotRow] = {
             
-            // Generate FilterFields
-            let filterFields = generateFilterFields(from: tableWithBlanks, fields: fields)
+            guard percentagesEnabled else { return rowsWithoutPercentages }
             
-            return Pivot(rows: sorted, filterFields: filterFields, total: total)
+            // Add percentages
+            return generatePivotRowsWithPercentages(for: rowsWithoutPercentages, total: total)
+        }()
+        
+        
+        // Sort
+        let sorted = rows.sorted(using: sortDescriptor)
+        
+        // Generate FilterFields
+        let filterFields = generateFilterFields(from: tableWithBlanks, fields: fields)
+        
+        return Pivot(rows: sorted, filterFields: filterFields, total: total)
     }
 }
 
@@ -139,13 +139,18 @@ fileprivate extension BuildPivot {
                 return rows.count
             }()
             
- 
+            
             // Compute the sum
             // For this to work the value of the fields must be a number
             let sum: Float? = sumsEnabled ? {
                 
                 // If there are subrows then add up all the sums to get the overal sum for the parent row
                 if let theSubrows = subRows {
+                    
+                    // Check the titles can be converted to numbers
+                    guard (theSubrows.compactMap { Float($0.title) }).count > 0 else {
+                        return nil
+                    }
                     
                     return theSubrows.reduce(0, { inital, row -> Float in
                         
@@ -176,7 +181,7 @@ fileprivate extension BuildPivot {
             return PivotRow(level: level, title: fieldValue, value: PivotRow.Value(count: count, sum: sum, percentage: percentage), subRows: subRowsOrNil)
         }
         
-       return pivotRows
+        return pivotRows
     }
     
     
@@ -186,17 +191,17 @@ fileprivate extension BuildPivot {
     ///   - total: The overall total to compute percentages from
     func generatePivotRowsWithPercentages(for rows: [PivotRow], total: Int) -> [PivotRow] {
         
-         return rows.map { row -> PivotRow in
-             let count = row.value.count
-             let percentage = Float(count) / Float(total)
-             
-             let subRowsWithPercentages = row.subRows.flatMap { generatePivotRowsWithPercentages(for: $0, total: total) } ?? nil
-             
+        return rows.map { row -> PivotRow in
+            let count = row.value.count
+            let percentage = Float(count) / Float(total)
+            
+            let subRowsWithPercentages = row.subRows.flatMap { generatePivotRowsWithPercentages(for: $0, total: total) } ?? nil
+            
             return PivotRow(level: row.level, title: row.title, value: PivotRow.Value(count: count, sum: row.value.sum, percentage: percentage), subRows: subRowsWithPercentages)
-         }
-         
-
-     }
+        }
+        
+        
+    }
     
     func generateFilterFields(from table: Table, fields: [FieldName]) -> [FilterField] {
         

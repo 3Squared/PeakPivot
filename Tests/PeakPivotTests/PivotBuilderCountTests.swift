@@ -11,7 +11,7 @@ import XCTest
 
 class PivotBuilderCountTests: PivotBuilderTestsBase {
     
-    func testTwoLevels() {
+    func testTwoLevels_exampleA() {
         builder.fields = ["age_range", "gender"]
         
         runBuilder()
@@ -41,6 +41,73 @@ class PivotBuilderCountTests: PivotBuilderTestsBase {
                 PivotRow(level: 1, title: "Male", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows: nil),
                 PivotRow(level: 1, title: "(blank)", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows: nil)
             ])
+        ]
+        
+        XCTAssertEqual(pivotRows, expected)
+    }
+    
+    func x_testTwoLevels_exampleB() {
+        // TODO: Fix me
+        
+        builder.fields = ["age", "age_range"]
+        
+        runBuilder()
+        
+        let expected: [PivotRow] = [
+            PivotRow(level: 0, title: "21", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows: [
+                PivotRow(level: 1, title: "20s", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows:nil)
+            ]),
+            PivotRow(level: 0, title: "25", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows: [
+                PivotRow(level: 1, title: "20s", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows:nil)
+            ]),
+            PivotRow(level: 0, title: "29", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows: [
+                PivotRow(level: 1, title: "20s", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows:nil)
+            ]),
+            PivotRow(level: 0, title: "33", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows: [
+                PivotRow(level: 1, title: "30s", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows:nil)
+            ]),
+            PivotRow(level: 0, title: "35", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows: [
+                PivotRow(level: 1, title: "30s", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows:nil)
+            ]),
+            PivotRow(level: 0, title: "36", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows: [
+                PivotRow(level: 1, title: "30s", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows:nil)
+            ]),
+            PivotRow(level: 0, title: "38", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows: [
+                PivotRow(level: 1, title: "30s", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows:nil)
+            ]),
+            PivotRow(level: 0, title: "40", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows: [
+                PivotRow(level: 1, title: "40s", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows:nil)
+            ]),
+            PivotRow(level: 0, title: "41", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows: [
+                PivotRow(level: 1, title: "40s", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows:nil)
+            ]),
+            PivotRow(level: 0, title: "42", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows: [
+                PivotRow(level: 1, title: "40s", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows:nil)
+            ]),
+            PivotRow(level: 0, title: "44", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows: [
+                PivotRow(level: 1, title: "40s", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows:nil)
+            ]),
+            PivotRow(level: 0, title: "45", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows: [
+                PivotRow(level: 1, title: "40s", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows:nil)
+            ]),
+            PivotRow(level: 0, title: "52", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows: [
+                PivotRow(level: 1, title: "50s", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows:nil)
+            ]),
+            PivotRow(level: 0, title: "54", value: PivotRow.Value(count: 2, sum: nil, percentage: nil), subRows: [
+                PivotRow(level: 1, title: "50s", value: PivotRow.Value(count: 2, sum: nil, percentage: nil), subRows:nil)
+            ]),
+            PivotRow(level: 0, title: "57", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows: [
+                PivotRow(level: 1, title: "50s", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows:nil)
+            ]),
+            PivotRow(level: 0, title: "58", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows: [
+                PivotRow(level: 1, title: "50s", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows:nil)
+            ]),
+            PivotRow(level: 0, title: "63", value: PivotRow.Value(count: 2, sum: nil, percentage: nil), subRows: [
+                PivotRow(level: 1, title: "60s", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows:nil)
+            ]),
+            PivotRow(level: 0, title: "68", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows: [
+                PivotRow(level: 1, title: "60s", value: PivotRow.Value(count: 1, sum: nil, percentage: nil), subRows:nil)
+            ]),
         ]
         
         XCTAssertEqual(pivotRows, expected)

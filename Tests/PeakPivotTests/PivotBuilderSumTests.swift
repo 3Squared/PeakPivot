@@ -12,7 +12,7 @@ import XCTest
 
 class PivotBuilderSumTests: PivotBuilderTestsBase {
     
-    func test_onLevels_summingNumbers() {
+    func test_oneLevel_withoutPercentages() {
         
         builder.fields = ["age"]
         builder.sumsEnabled = true
@@ -43,7 +43,7 @@ class PivotBuilderSumTests: PivotBuilderTestsBase {
         XCTAssertEqual(pivotRows, expected)
     }
     
-    func test_onLevels_summingNumbers_percentagesEnabled() {
+    func test_oneLevel_percentagesEnabled() {
         
         builder.fields = ["age"]
         builder.sumsEnabled = true
@@ -75,7 +75,25 @@ class PivotBuilderSumTests: PivotBuilderTestsBase {
         XCTAssertEqual(pivotRows, expected)
     }
     
-    func test_twoLevels_summingNumbers() {
+    func test_oneLevel_withoutNumbers() {
+        builder.fields = ["age_range"]
+        builder.sumsEnabled = true
+        
+        runBuilder()
+        
+        let expected: [PivotRow] = [
+            PivotRow(level: 0, title: "20s", value: PivotRow.Value(count: 3, sum: nil, percentage: nil), subRows: nil),
+            PivotRow(level: 0, title: "30s", value: PivotRow.Value(count: 4, sum: nil, percentage: nil), subRows: nil),
+            PivotRow(level: 0, title: "40s", value: PivotRow.Value(count: 5, sum: nil, percentage: nil), subRows: nil),
+            PivotRow(level: 0, title: "50s", value: PivotRow.Value(count: 5, sum: nil, percentage: nil), subRows: nil),
+            PivotRow(level: 0, title: "60s", value: PivotRow.Value(count: 3, sum: nil, percentage: nil), subRows: nil)
+        ]
+        
+        XCTAssertEqual(pivotRows, expected)
+    }
+    
+    
+    func test_twoLevels() {
         builder.fields = ["age_range", "age"]
         builder.sumsEnabled = true
         
@@ -110,23 +128,6 @@ class PivotBuilderSumTests: PivotBuilderTestsBase {
                 PivotRow(level: 1, title: "63", value: PivotRow.Value(count: 2, sum: 126, percentage: nil), subRows: nil),
                 PivotRow(level: 1, title: "68", value: PivotRow.Value(count: 1, sum: 68, percentage: nil), subRows: nil),
             ])
-        ]
-        
-        XCTAssertEqual(pivotRows, expected)
-    }
-    
-    func test_oneLevel_summingWithoutNumbers() {
-        builder.fields = ["age_range"]
-        builder.sumsEnabled = true
-        
-        runBuilder()
-        
-        let expected: [PivotRow] = [
-            PivotRow(level: 0, title: "20s", value: PivotRow.Value(count: 3, sum: nil, percentage: nil), subRows: nil),
-            PivotRow(level: 0, title: "30s", value: PivotRow.Value(count: 4, sum: nil, percentage: nil), subRows: nil),
-            PivotRow(level: 0, title: "40s", value: PivotRow.Value(count: 5, sum: nil, percentage: nil), subRows: nil),
-            PivotRow(level: 0, title: "50s", value: PivotRow.Value(count: 5, sum: nil, percentage: nil), subRows: nil),
-            PivotRow(level: 0, title: "60s", value: PivotRow.Value(count: 3, sum: nil, percentage: nil), subRows: nil)
         ]
         
         XCTAssertEqual(pivotRows, expected)
