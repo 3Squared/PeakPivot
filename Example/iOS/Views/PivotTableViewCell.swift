@@ -11,5 +11,6 @@ import UIKit
 class PivotTableViewCell: UITableViewCell {
     @IBOutlet var valueLabel: UILabel!
     @IBOutlet var countLabel: UILabel!
+    @IBOutlet var sumLabel: UILabel!
     @IBOutlet var percentageLabel: UILabel!
 }

@@ -64,6 +64,8 @@ class PivotViewController: UITableViewController {
             }
         }
         
+        builder.sumsEnabled = true
+        
         runBuilder(reload: false)
         
     }
@@ -82,21 +84,27 @@ extension PivotViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? PivotTableViewCell else {
+        
+        let row = pivotRows[indexPath.row]
+        let sumValue = row.value.sum
+        let identifer = sumValue != nil ? "countAndSumCell" : "countCell"
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: identifer, for: indexPath) as? PivotTableViewCell else {
             fatalError("Cannot dequeue PivotCell")
         }
         
-        let row = pivotRows[indexPath.row]
         
         let rowTitle = row.title
         let indent = String.init(repeating: "  ", count: row.level*3)
         let rowText = row.level > 0 ? "\(indent)| \(rowTitle)" : "\(rowTitle)"
         
         cell.valueLabel.text = rowText
-        cell.countLabel.text = "\(Int(row.value.count))"
+        cell.countLabel.text = "\(row.value.count)"
+        if let sum = sumValue {
+            cell.sumLabel.text = "\(sum) ∑"
+        }
         
         // TODO: Fix crash - Float value cannot be converted to Int because it is either infinite or NaN
-        
         if let percentage = row.value.percentage, !percentage.isNaN {
             cell.percentageLabel.text = "\(Int(percentage * 100))%"
         }
@@ -104,7 +112,12 @@ extension PivotViewController {
         return cell
     }
     
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let row = pivotRows[indexPath.row]
+        if let _ = row.value.sum {
+            return 70
+        }
         return 60
     }
 }
