@@ -28,36 +28,5 @@ public enum PivotBuilder {
         
         public init() {}
     }
-    
-    // TODO: Add unit tests for these templates
-    /// Pre-defined temapltes for building pivots
-    public enum Template {
-        
-        public struct CompanyByAppVersion: BuildPivot {
-            
-            public var table: Table? = nil
-            
-            public var fields: [FieldName]? = [
-                "Company Name",
-                "App Version"
-            ]
-            
-            public var percentagesEnabled = true
-            
-            public var zeroRowsEnabled = false
-            
-            public var sortDescriptor = BuildPivotDescriptor.byValue(ascending: false)
-            
-            public var filters: [BuildPivotFilter]? = [BuildPivotFilter(fieldName: "Company Name", include: [
-                "Colas Rail Ltd",
-                "DWS Demo",
-                "Freightliner Ltd",
-                "GB Railfreight",
-                "LNER",
-                "Network Rail",
-                "Wabtec Rail Ltd",
-            ])]
-        }
-    }
 
 }
