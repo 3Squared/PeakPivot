@@ -20,6 +20,8 @@ public enum PivotBuilder {
         
         public var percentagesEnabled = true
         
+        public var sumsEnabled = false
+        
         public var zeroRowsEnabled = true
         
         public var sortDescriptor = BuildPivotDescriptor.byTitle(ascending: true)

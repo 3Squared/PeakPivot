@@ -29,6 +29,9 @@ public struct PivotRow {
         /// The count of the row
         public let count: Int
         
+        /// The sum of the row
+        public let sum: Float?
+        
         /// The precentage value calculated against the rest of the pivot
         public let percentage: Float?
     }

@@ -19,6 +19,8 @@ public protocol BuildPivot {
     /// Whether to compute percentages or not
     var percentagesEnabled: Bool { get set }
     
+    var sumsEnabled: Bool  { get set }
+    
     /// Whether to include rows that have zero values
     var zeroRowsEnabled: Bool  { get set }
     
@@ -137,6 +139,29 @@ fileprivate extension BuildPivot {
                 return rows.count
             }()
             
+ 
+            // Compute the sum
+            // For this to work the value of the fields must be a number
+            let sum: Float? = sumsEnabled ? {
+                
+                // If there are subrows then add up all the sums to get the overal sum for the parent row
+                if let theSubrows = subRows {
+                    
+                    return theSubrows.reduce(0, { inital, row -> Float in
+                        
+                        if let rowFloat = Float(row.title) {
+                            return inital + (rowFloat * Float(row.value.count))
+                        }
+                        
+                        return inital
+                    })
+                }
+                
+                else {
+                    return Float(fieldValue).flatMap { $0 * Float(count) } ?? nil
+                }
+            }() : nil
+            
             // Remove any rows with zero if not enabled
             let keepThisRow = zeroRowsEnabled || !zeroRowsEnabled && count > 0
             guard keepThisRow else { return nil }
@@ -148,7 +173,7 @@ fileprivate extension BuildPivot {
             let subRowsOrNil = subRows?.count == 0 ? nil : subRows
             
             // Create the PivotRow for the group and it's sub rows
-            return PivotRow(level: level, title: fieldValue, value: PivotRow.Value(count: count, percentage: percentage), subRows: subRowsOrNil)
+            return PivotRow(level: level, title: fieldValue, value: PivotRow.Value(count: count, sum: sum, percentage: percentage), subRows: subRowsOrNil)
         }
         
        return pivotRows
@@ -167,7 +192,7 @@ fileprivate extension BuildPivot {
              
              let subRowsWithPercentages = row.subRows.flatMap { generatePivotRowsWithPercentages(for: $0, total: total) } ?? nil
              
-             return PivotRow(level: row.level, title: row.title, value: PivotRow.Value(count: count, percentage: percentage), subRows: subRowsWithPercentages)
+             return PivotRow(level: row.level, title: row.title, value: PivotRow.Value(count: count, sum: nil, percentage: percentage), subRows: subRowsWithPercentages)
          }
          
 
