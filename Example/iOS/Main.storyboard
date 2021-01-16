@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="60" id="iZW-td-2x3" customClass="PivotTableViewCell" customModule="PeakPivot_Example" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="countCell" rowHeight="60" id="iZW-td-2x3" customClass="PivotTableViewCell" customModule="PeakPivot_Example" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iZW-td-2x3" id="UL2-5i-Wri">
@@ -69,6 +69,71 @@
                                     <outlet property="countLabel" destination="hA8-09-JW5" id="fAl-Ml-Ppv"/>
                                     <outlet property="percentageLabel" destination="NTS-2T-6PV" id="gc7-Ee-IFa"/>
                                     <outlet property="valueLabel" destination="ndY-v8-LrA" id="xOD-uf-MOK"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="countAndSumCell" rowHeight="70" id="Pe1-Hk-WON" customClass="PivotTableViewCell" customModule="PeakPivot_Example" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="88" width="414" height="70"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Pe1-Hk-WON" id="rwV-pU-Htk">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wJs-wG-Z78">
+                                            <rect key="frame" x="294" y="4" width="100" height="62.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="n" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZG-Bf-oju">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="Vqg-y0-Rtf"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="n ∑" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kgi-DV-Jn3">
+                                                    <rect key="frame" x="0.0" y="21" width="100" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="5T5-83-1g8"/>
+                                                        <constraint firstAttribute="height" constant="21" id="Vfp-km-Pg1"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="n%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDf-fh-iNa">
+                                                    <rect key="frame" x="0.0" y="42" width="100" height="20.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20.5" id="3Gy-QO-iPq"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eWn-Hy-JiT">
+                                            <rect key="frame" x="20" y="24.5" width="41.5" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="Zqx-Ju-KRI"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="wJs-wG-Z78" firstAttribute="centerY" secondItem="rwV-pU-Htk" secondAttribute="centerY" id="2n7-sj-qfk"/>
+                                        <constraint firstItem="eWn-Hy-JiT" firstAttribute="leadingMargin" secondItem="rwV-pU-Htk" secondAttribute="leadingMargin" constant="8" id="RAU-oL-hju"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="wJs-wG-Z78" secondAttribute="trailing" id="a65-sk-zCh"/>
+                                        <constraint firstItem="eWn-Hy-JiT" firstAttribute="centerY" secondItem="rwV-pU-Htk" secondAttribute="centerY" id="cvl-cc-lQ3"/>
+                                        <constraint firstItem="wJs-wG-Z78" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eWn-Hy-JiT" secondAttribute="trailing" constant="8" symbolic="YES" id="mT9-Rm-mV3"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="countLabel" destination="LZG-Bf-oju" id="dxP-Ww-B4n"/>
+                                    <outlet property="percentageLabel" destination="mDf-fh-iNa" id="e5Y-Kb-9ZH"/>
+                                    <outlet property="sumLabel" destination="Kgi-DV-Jn3" id="fLw-jt-ykP"/>
+                                    <outlet property="valueLabel" destination="eWn-Hy-JiT" id="Cow-XD-MWO"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -174,142 +239,11 @@
             </objects>
             <point key="canvasLocation" x="4809" y="-613"/>
         </scene>
-        <!--Filter Fields-->
-        <scene sceneID="biG-M9-eqW">
-            <objects>
-                <tableViewController storyboardIdentifier="filter" id="Een-jX-IjQ" customClass="FilterViewController" customModule="PeakPivot_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hKQ-IP-aAR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="value" id="jOj-tl-YB4" customClass="FieldValueCell" customModule="PeakPivot_Example" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jOj-tl-YB4" id="p9K-mB-NWH">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="selectAll" textLabel="wys-y7-VI1" style="IBUITableViewCellStyleDefault" id="Dvg-a0-UPb" customClass="FieldValueCell" customModule="PeakPivot_Example" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="71.5" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dvg-a0-UPb" id="yOZ-OC-ZLk">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="SELECT ALL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wys-y7-VI1">
-                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="header" id="SQB-QH-w8X" customClass="FieldNameHeaderCell" customModule="PeakPivot_Example" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="115" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SQB-QH-w8X" id="usH-2D-ii8">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rb7-1Y-i4H">
-                                            <rect key="frame" x="20" y="11.5" width="43.5" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="IZw-MF-xIE"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
-                                    <constraints>
-                                        <constraint firstAttribute="leadingMargin" secondItem="rb7-1Y-i4H" secondAttribute="leading" id="Zdc-hh-2Tt"/>
-                                        <constraint firstItem="rb7-1Y-i4H" firstAttribute="centerY" secondItem="usH-2D-ii8" secondAttribute="centerY" id="c7t-l7-vw9"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="nameLabel" destination="rb7-1Y-i4H" id="t9J-R4-WQA"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Een-jX-IjQ" id="1JI-0J-5rW"/>
-                            <outlet property="delegate" destination="Een-jX-IjQ" id="hGr-wP-SlV"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Filter Fields" id="ZMz-tH-iut">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="aUZ-M4-GPu">
-                            <connections>
-                                <action selector="cancellTapped:" destination="Een-jX-IjQ" id="mKd-VO-K7h"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Apply" style="done" id="9lU-js-9hY">
-                            <connections>
-                                <action selector="applyTapped:" destination="Een-jX-IjQ" id="wWe-Qs-GcH"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <segue destination="qkn-VP-IF2" kind="unwind" identifier="unwindToPivot" unwindAction="unwindToPivot:" id="kMM-aV-BMI"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6DL-4O-kmN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="qkn-VP-IF2" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="6197" y="869"/>
-        </scene>
-        <!--Sort-->
-        <scene sceneID="TuX-8t-jXK">
-            <objects>
-                <tableViewController storyboardIdentifier="sort" id="rxd-k3-qKI" customClass="SortViewController" customModule="PeakPivot_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Oun-Vy-Irl">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="sortCell" textLabel="No9-I5-Tyt" style="IBUITableViewCellStyleDefault" id="QU5-N7-Ck1">
-                                <rect key="frame" x="20" y="55.5" width="374" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QU5-N7-Ck1" id="mNn-Gv-TXQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Sort Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="No9-I5-Tyt">
-                                            <rect key="frame" x="20" y="0.0" width="334" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <sections/>
-                        <connections>
-                            <outlet property="dataSource" destination="rxd-k3-qKI" id="xXm-Zy-W8X"/>
-                            <outlet property="delegate" destination="rxd-k3-qKI" id="gs0-Rb-OYb"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Sort" id="oaR-gw-pQc">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="XZp-at-avS">
-                            <connections>
-                                <segue destination="ODk-bB-CTd" kind="unwind" identifier="unwindToPivot" unwindAction="unwindToPivot:" id="wqN-IP-hRB"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="K7P-eh-5Gw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="ODk-bB-CTd" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="7091" y="869"/>
-        </scene>
         <!--Config-->
         <scene sceneID="SDS-Hr-IHa">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qFN-1J-TT3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="qrU-e1-VlJ" userLabel="Exit" sceneMemberID="exit"/>
                 <tableViewController storyboardIdentifier="config" title="Config" id="ScD-9c-aon" customClass="ConfigViewController" customModule="PeakPivot_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="4JI-xi-3d1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -369,16 +303,11 @@
                         <outlet property="showZeroCountsSwitch" destination="AAr-BH-8hh" id="dss-zr-bc0"/>
                     </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qFN-1J-TT3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="qrU-e1-VlJ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="7941" y="869"/>
         </scene>
     </scenes>
     <resources>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
