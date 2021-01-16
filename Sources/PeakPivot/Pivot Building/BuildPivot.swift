@@ -192,7 +192,7 @@ fileprivate extension BuildPivot {
              
              let subRowsWithPercentages = row.subRows.flatMap { generatePivotRowsWithPercentages(for: $0, total: total) } ?? nil
              
-             return PivotRow(level: row.level, title: row.title, value: PivotRow.Value(count: count, sum: nil, percentage: percentage), subRows: subRowsWithPercentages)
+            return PivotRow(level: row.level, title: row.title, value: PivotRow.Value(count: count, sum: row.value.sum, percentage: percentage), subRows: subRowsWithPercentages)
          }
          
 
