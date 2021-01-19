@@ -41,7 +41,7 @@ class PivotViewController: UITableViewController {
             
         case .fields(let fieldNames):
             
-            builder = PivotBuilder.Custom()
+            builder = PivotBuilder()
 
             builder.fields = fieldNames
             builder.sortDescriptor = BuildPivotDescriptor.byTitle(ascending: true)
