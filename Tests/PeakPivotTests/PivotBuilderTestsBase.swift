@@ -11,7 +11,7 @@ import XCTest
 
 class PivotBuilderTestsBase: XCTestCase {
         
-    let builder = PivotBuilder.Custom()
+    let builder = PivotBuilder()
     var pivot: Pivot!
     
     var pivotRows: [PivotRow] {
