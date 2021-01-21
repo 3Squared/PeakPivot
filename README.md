@@ -136,6 +136,8 @@ do {
 
 ```
 
+For more examples of how to use PeakPivot see the [unit tests](Tests/PeakPivotTests)
+
 ## Installation
 
 PeakPivot supports the Swift Pakcage Manager. Add the PeakPivot dependency in your `package.swift`.
