@@ -54,7 +54,11 @@ These types are the output from the pivot building logic. They are highlighted i
 
 ## Building a Pivot
 
-To recreate the pivot table shown [Excell spreadsheet above](#Types) we load in the [`people.csv`](Assets/people.csv) csv file using SwiftCSV (including with PeakPivot) and construct a `PivotBuilder` with the corresponding input and configuration data. We then call `build()`.
+To recreate the pivot table shown [Excell spreadsheet above](#Types) we load in the [`people.csv`](Assets/people.csv) csv file using SwiftCSV (including with PeakPivot) and construct a `PivotBuilder` with the corresponding input and configuration data.
+
+Set the `.fields` variable to the `FieldName`s you want to group the pivot table using. The last `FieldName` in the array defines the `FieldValue`s in the input `Table` to summarise using sum, count and percentage operators.
+
+Once configured call the `build()` function.
 
 ```swift
 do {
@@ -64,13 +68,13 @@ do {
 
     let builder = PivotBuilder()
     builder.table = csvRows
-    builder.fields = ["title", "age"]
-    builder.sortDescriptor = .byTitle(ascending: false)
-    builder.filters = [BuildPivotFilter(fieldName: "title", include: ["Ms", "Mrs", "Mr", "Honorable", "Dr"])]
-    builder.sumsEnabled = true
-    builder.percentagesEnabled = true
+    builder.fields = ["title", "age"] // "age" is summarised
+    builder.sortDescriptor = .byTitle(ascending: false) 
+    builder.filters = [BuildPivotFilter(fieldName: "title", include: ["Ms", "Mrs", "Mr", "Honorable", "Dr"])] // exclude "Blank" and "Rev" from the pivot table
+    builder.sumsEnabled = true // compute sums
+    builder.percentagesEnabled = true // compute percentages
 
-    let pivot = try builder.build()
+    let pivot = try builder.build() //  run and catch any errors
     
     // pivot.rows will equal
     let pivotRows = [
@@ -127,7 +131,7 @@ do {
             "58",
             "63",
             "68"
-        ]),
+        ])
     ]
 
 ]
@@ -138,16 +142,16 @@ do {
 
 ```
 
-For more examples of how to use PeakPivot see the [unit tests](Tests/PeakPivotTests).
+For more examples of how to use PeakPivot see the [unit tests](Tests/PeakPivotTests). There is also a basic [example iOS project](Example) that uses PeakPivot.
 
 ## Installation
 
-PeakPivot supports the Swift Pakcage Manager. Add the PeakPivot dependency in your `package.swift`.
+PeakPivot supports the Swift Package Manager. Add the PeakPivot dependency in your `package.swift`.
 
 ```swift
 dependencies: [
     .package(
-        url: "git@github.com:3squared/PeakPivot.git",
+        url: "https://github.com/3squared/PeakPivot.git",
         .branch("main")
     ),
 ]
