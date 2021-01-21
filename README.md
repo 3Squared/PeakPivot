@@ -152,7 +152,7 @@ PeakPivot supports the Swift Package Manager. Add the PeakPivot dependency in yo
 dependencies: [
     .package(
         url: "https://github.com/3squared/PeakPivot.git",
-        .branch("main")
+        .exact("0.1.0")
     ),
 ]
 ```
