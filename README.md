@@ -136,8 +136,17 @@ do {
 
 ```
 
-## Instalation
+## Installation
+
+PeakPivot supports the Swift Pakcage Manager. Add the PeakPivot dependency in your `package.swift`.
+
+```swift
+dependencies: [
+    .package(
+        url: "git@github.com:3squared/PeakPivot.git",
+        .branch("main")
+    ),
+]
+```
 
 ## Licence
-
-## Example
