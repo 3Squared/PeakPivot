@@ -1,5 +1,7 @@
 # PeakPivot
 
+![Swift](https://github.com/3squared/PeakPivot/workflows/Swift/badge.svg?branch=main)
+
 [Wikipedia](https://en.wikipedia.org/wiki/Pivot_table) says:
 
 > Pivot tables are a technique in data processing. They arrange and rearrange (or "pivot") statistics in order to draw attention to useful information. This leads to finding figures and facts quickly making them integral to data analysis. 
@@ -136,7 +138,7 @@ do {
 
 ```
 
-For more examples of how to use PeakPivot see the [unit tests](Tests/PeakPivotTests)
+For more examples of how to use PeakPivot see the [unit tests](Tests/PeakPivotTests).
 
 ## Installation
 
