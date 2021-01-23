@@ -107,6 +107,20 @@ extension PivotRow: Comparable {
         }
         return ascending ? lhsValue < rhsValue : lhsValue > rhsValue
     }
+    
+    static func compareBySum(lhs: PivotRow, rhs: PivotRow, ascending: Bool = true)  -> Bool {
+        guard
+            let lhsValue = lhs.value.sum,
+            let rhsValue = rhs.value.sum
+        else {
+            if lhs.value.sum == nil && rhs.value.sum != nil {
+                return true
+            }
+            return false
+        }
+        
+        return ascending ? lhsValue < rhsValue : lhsValue > rhsValue
+    }
 }
 
 public extension Array where Element == PivotRow {
@@ -116,6 +130,15 @@ public extension Array where Element == PivotRow {
         
         return thisLevel.map { row -> PivotRow in
             let nextLevel = row.subRows?.sortedByTitle(ascending: ascending)
+            return PivotRow(level: row.level, title: row.title, value: row.value, subRows: nextLevel)
+        }
+    }
+    
+    func sortedBySum(ascending: Bool = true) -> [Element] {
+        let thisLevel = sorted { PivotRow.compareBySum(lhs: $0, rhs: $1, ascending: ascending) }
+        
+        return thisLevel.map { row -> PivotRow in
+            let nextLevel = row.subRows?.sortedBySum(ascending: ascending)
             return PivotRow(level: row.level, title: row.title, value: row.value, subRows: nextLevel)
         }
     }
@@ -184,6 +207,8 @@ public extension Array where Element == PivotRow {
             return sortedByTitle(ascending: ascending)
         case .byCount(let ascending):
             return sortedByCount(ascending: ascending)
+        case .bySum(let ascending):
+            return sortedBySum(ascending: ascending)
         }
     }
 }
