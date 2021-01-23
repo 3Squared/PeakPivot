@@ -71,7 +71,7 @@ class PivotBuilderSingleFilterTests: PivotBuilderTestsBase {
     }
     
     func testThreeLevels_threeIncludesAtLevelTwo_sortByValueAscending_noPercentages() {
-        builder.sortDescriptor = .byValue(ascending: true)
+        builder.sortDescriptor = .byCount(ascending: true)
         builder.fields = ["age_range", "gender"]
         builder.filters = [BuildPivotFilter(fieldName: "age_range", include: ["20s", "30s", "60s"])]
         

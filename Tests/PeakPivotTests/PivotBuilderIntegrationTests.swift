@@ -36,7 +36,7 @@ class PivotBuilderIntegrationTests: PivotBuilderTestsBase {
         builder.table = TestData.people
         builder.fields = ["age_range", "gender"]
         builder.filters = [BuildPivotFilter(fieldName: "age_range", include: ["40s", "60s"])]
-        builder.sortDescriptor = .byValue(ascending: false)
+        builder.sortDescriptor = .byCount(ascending: false)
         builder.percentagesEnabled = true
         
         runBuilder()
@@ -59,7 +59,7 @@ class PivotBuilderIntegrationTests: PivotBuilderTestsBase {
     
     func testThreeLevels_oneFilterAtLevelTwo_sortByValueDescending_() {
         builder.percentagesEnabled = true
-           builder.sortDescriptor = .byValue(ascending: false)
+           builder.sortDescriptor = .byCount(ascending: false)
            builder.fields = ["age_range", "gender", "title"]
            builder.filters = [BuildPivotFilter(fieldName: "gender", include: ["Female"])]
            

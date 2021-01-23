@@ -21,9 +21,10 @@ public struct Pivot {
     public let total: Int
 }
 
-/// A Ro in a Pivot
+/// A Row in a Pivot
 public struct PivotRow {
     
+    /// The computed values
     public struct Value {
         
         /// The count of the row
@@ -71,14 +72,6 @@ extension FilterField: CustomDebugStringConvertible {
 
 extension PivotRow.Value: Equatable { }
 
-extension PivotRow.Value: Comparable {
-    public static func < (lhs: PivotRow.Value, rhs: PivotRow.Value) -> Bool {
-        return lhs.count < rhs.count
-    }
-    
-    
-}
-
 extension PivotRow: Equatable {}
 
 public extension String {
@@ -105,9 +98,9 @@ extension PivotRow: Comparable {
         return String.compareAsTitle(lhs: lhs.title, rhs: rhs.title, ascending: ascending)
     }
     
-    static func compareByValue(lhs: PivotRow, rhs: PivotRow, ascending: Bool = true)  -> Bool {
-        let lhsValue = lhs.value
-        let rhsValue = rhs.value
+    static func compareByCount(lhs: PivotRow, rhs: PivotRow, ascending: Bool = true)  -> Bool {
+        let lhsValue = lhs.value.count
+        let rhsValue = rhs.value.count
         
         if lhsValue == rhsValue {
             return compareByTitle(lhs: lhs, rhs: rhs)
@@ -127,11 +120,11 @@ public extension Array where Element == PivotRow {
         }
     }
     
-    func sortedByValue(ascending: Bool = true) ->  [Element]{
-        let thisLevel = sorted { PivotRow.compareByValue(lhs: $0, rhs: $1, ascending: ascending) }
+    func sortedByCount(ascending: Bool = true) ->  [Element]{
+        let thisLevel = sorted { PivotRow.compareByCount(lhs: $0, rhs: $1, ascending: ascending) }
         
         return thisLevel.map { row -> PivotRow in
-            let nextLevel = row.subRows?.sortedByValue(ascending: ascending)
+            let nextLevel = row.subRows?.sortedByCount(ascending: ascending)
             return PivotRow(level: row.level, title: row.title, value: row.value, subRows: nextLevel)
         }
     }
@@ -189,8 +182,8 @@ public extension Array where Element == PivotRow {
         switch descriptor {
         case .byTitle(let ascending):
             return sortedByTitle(ascending: ascending)
-        case .byValue(let ascending):
-            return sortedByValue(ascending: ascending)
+        case .byCount(let ascending):
+            return sortedByCount(ascending: ascending)
         }
     }
 }

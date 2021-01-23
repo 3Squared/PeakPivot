@@ -30,7 +30,7 @@ class PivotBuilderSortingTests: PivotBuilderTestsBase {
     
     func testOneLevel_byTitleAscending() {
         builder.fields = ["age_range"]
-        builder.sortDescriptor = .byValue(ascending: true)
+        builder.sortDescriptor = .byCount(ascending: true)
         
         runBuilder()
         
@@ -47,7 +47,7 @@ class PivotBuilderSortingTests: PivotBuilderTestsBase {
     
     func testTwoLevels_byValueAscending() {
         builder.fields = ["age_range", "gender"]
-        builder.sortDescriptor = .byValue(ascending: true)
+        builder.sortDescriptor = .byCount(ascending: true)
         
         runBuilder()
         
@@ -84,7 +84,7 @@ class PivotBuilderSortingTests: PivotBuilderTestsBase {
     
     func testTwoLevels_byValueDescending() {
         builder.fields = ["age_range", "gender", "title"]
-        builder.sortDescriptor = .byValue(ascending: false)
+        builder.sortDescriptor = .byCount(ascending: false)
         
         runBuilder()
         
