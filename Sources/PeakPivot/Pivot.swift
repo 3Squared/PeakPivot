@@ -74,7 +74,15 @@ extension PivotRow.Value: Equatable { }
 
 extension PivotRow: Equatable {}
 
-public extension String {
+extension String {
+    
+    
+    /// Compare  PivotRow.Value.title strings. Takes into account if either title is a Blank
+    /// - Parameters:
+    ///   - lhs: First title
+    ///   - rhs: Second title
+    ///   - ascending: Whether to ascending
+    /// - Returns: If lhs should be before rhs
     static func compareAsTitle(lhs: String, rhs: String, ascending: Bool = true) -> Bool {
         if lhs == Blank.description {
             return false
@@ -123,37 +131,6 @@ extension PivotRow: Comparable {
     }
 }
 
-public extension Array where Element == PivotRow {
-    func sortedByTitle(ascending: Bool = true) -> [Element] {
-        
-        let thisLevel = sorted { PivotRow.compareByTitle(lhs: $0, rhs: $1, ascending: ascending) }
-        
-        return thisLevel.map { row -> PivotRow in
-            let nextLevel = row.subRows?.sortedByTitle(ascending: ascending)
-            return PivotRow(level: row.level, title: row.title, value: row.value, subRows: nextLevel)
-        }
-    }
-    
-    func sortedBySum(ascending: Bool = true) -> [Element] {
-        let thisLevel = sorted { PivotRow.compareBySum(lhs: $0, rhs: $1, ascending: ascending) }
-        
-        return thisLevel.map { row -> PivotRow in
-            let nextLevel = row.subRows?.sortedBySum(ascending: ascending)
-            return PivotRow(level: row.level, title: row.title, value: row.value, subRows: nextLevel)
-        }
-    }
-    
-    func sortedByCount(ascending: Bool = true) ->  [Element]{
-        let thisLevel = sorted { PivotRow.compareByCount(lhs: $0, rhs: $1, ascending: ascending) }
-        
-        return thisLevel.map { row -> PivotRow in
-            let nextLevel = row.subRows?.sortedByCount(ascending: ascending)
-            return PivotRow(level: row.level, title: row.title, value: row.value, subRows: nextLevel)
-        }
-    }
-    
-}
-
 extension PivotRow: CustomDebugStringConvertible {
     
     public var debugDescription: String {
@@ -172,10 +149,9 @@ extension PivotRow: CustomDebugStringConvertible {
         }
     }
     
-    
-    
 }
 
+/// Add helper description for PivotRows
 public extension Array where Element == PivotRow {
     var exportDescription: String {
         return map { row -> String in
@@ -199,16 +175,26 @@ public extension Array where Element == PivotRow {
 }
 
 
+/// Sorting PivotRows
 public extension Array where Element == PivotRow {
     
     func sorted(using descriptor: BuildPivotDescriptor) -> [PivotRow] {
         switch descriptor {
         case .byTitle(let ascending):
-            return sortedByTitle(ascending: ascending)
+            return sort(ascending: ascending, comparator: PivotRow.compareByTitle)
         case .byCount(let ascending):
-            return sortedByCount(ascending: ascending)
+            return sort(ascending: ascending, comparator: PivotRow.compareByCount)
         case .bySum(let ascending):
-            return sortedBySum(ascending: ascending)
+            return sort(ascending: ascending, comparator: PivotRow.compareBySum)
+        }
+    }
+    
+    func sort(ascending: Bool, comparator: (_ lhs: PivotRow, _ rhs: PivotRow, _ ascending: Bool) -> Bool ) -> [PivotRow] {
+        let thisLevel = sorted { comparator($0, $1, ascending) }
+        
+        return thisLevel.map { row -> PivotRow in
+            let nextLevel = row.subRows?.sort(ascending: ascending, comparator: comparator)
+            return PivotRow(level: row.level, title: row.title, value: row.value, subRows: nextLevel)
         }
     }
 }
