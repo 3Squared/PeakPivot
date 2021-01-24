@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Rule that defines how to transform a source field
 public protocol MetaFieldRule {
     
     typealias Transformation = ((FieldValue) -> FieldValue)
@@ -17,52 +18,12 @@ public protocol MetaFieldRule {
     var transform: Transformation { get }
 }
 
+/// Concrete implementation of MetaFieldRule
 public struct CustomMetaFieldRule: MetaFieldRule {
     
     public let sourceFieldName: FieldName
     public let destinationFieldName: String
     
     public let transform: Transformation
-}
-
-public struct iOSModelTypeRule: MetaFieldRule {
-    
-    public let sourceFieldName: FieldValue = "Device model"
-    public let destinationFieldName = "iOS Model Type*"
-    
-    public var transform: Transformation =  { name in
-        enum DeviceType: String, CaseIterable {
-            case iPad
-            case iPhone
-            case Simulator
-            case Unknown
-        }
-        
-        if name.contains(DeviceType.iPad.rawValue) {
-            return DeviceType.iPad.rawValue
-        }
-        else if name.contains(DeviceType.iPhone.rawValue) {
-            return DeviceType.iPhone.rawValue
-        }
-        else if name.contains(DeviceType.Simulator.rawValue) {
-            return DeviceType.Simulator.rawValue
-        }
-        
-        return DeviceType.Unknown.rawValue
-    }
-}
-
-public struct MajorOSVersionRule: MetaFieldRule {
-    
-    public let sourceFieldName: FieldValue = "OS version"
-    public let destinationFieldName = "Major OS Version*"
-    
-    public var transform: Transformation =  { name in
-       guard
-        let major = name.components(separatedBy: ".").first
-            else { return "Unknown" }
-        
-        return major
-    }
 }
 

@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Transform a source table into a meta-table using a set of rules
 public class MetaTableBuilder {
     
     /// The source table to process
