@@ -117,3 +117,45 @@ class MetaFieldRuleTests: XCTestCase {
     }
     
 }
+
+
+struct iOSModelTypeRule: MetaFieldRule {
+    
+    public let sourceFieldName: FieldValue = "Device model"
+    public let destinationFieldName = "iOS Model Type*"
+    
+    public var transform: Transformation =  { name in
+        enum DeviceType: String, CaseIterable {
+            case iPad
+            case iPhone
+            case Simulator
+            case Unknown
+        }
+        
+        if name.contains(DeviceType.iPad.rawValue) {
+            return DeviceType.iPad.rawValue
+        }
+        else if name.contains(DeviceType.iPhone.rawValue) {
+            return DeviceType.iPhone.rawValue
+        }
+        else if name.contains(DeviceType.Simulator.rawValue) {
+            return DeviceType.Simulator.rawValue
+        }
+        
+        return DeviceType.Unknown.rawValue
+    }
+}
+
+struct MajorOSVersionRule: MetaFieldRule {
+    
+    public let sourceFieldName: FieldValue = "OS version"
+    public let destinationFieldName = "Major OS Version*"
+    
+    public var transform: Transformation =  { name in
+       guard
+        let major = name.components(separatedBy: ".").first
+            else { return "Unknown" }
+        
+        return major
+    }
+}

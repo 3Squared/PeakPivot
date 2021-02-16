@@ -13,8 +13,8 @@ let package = Package(
     ],
     dependencies: [
         .package(
-            url: "git@github.com:swiftcsv/SwiftCSV.git",
-            .exact("0.6.0")
+            url: "https://github.com/swiftcsv/SwiftCSV.git",
+            from: ("0.6.0")
         ),
     ],
     targets: [

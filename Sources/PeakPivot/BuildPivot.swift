@@ -34,10 +34,47 @@ public protocol BuildPivot {
 }
 
 /// Errors generated during the pivot building process
-public enum BuildPivotError: Error {
+public enum BuildPivotError: Error, LocalizedError {
+    
+    /// No table set
     case noTable
+    
+    /// No fields set
     case noFields
+    
+    /// Output fields failed to be generated
     case noOutput
+    
+    /// A localized message describing what error occurred.
+    public var errorDescription: String? {
+        get {
+            switch self {
+            case .noTable: return "No `table` variable was set so a pivot could not be built."
+            case .noFields: return "No `fields` variable was set so a pivot could not be built."
+            case .noOutput: return "The input and configuration data could not be used to generate a coherent pivot table."
+            }
+        }
+    }
+    
+    /// A localized message describing the reason for the failure.
+    public var failureReason: String? {
+        get {
+            switch self {
+            case .noTable: return "The `table` variable was not set."
+            case .noFields: return "The `fields` variable was not set."
+            case .noOutput: return "The combination of input and configuration data was not coherent and a pivot table could not be generated. For example a `FieldName` or `FieldValue` may be used in `filters` or `fields` that is not present in the input `table`."
+            }
+        }}
+
+    /// A localized message describing how one might recover from the failure.
+    public var recoverySuggestion: String? {
+        get {
+            switch self {
+            case .noTable: return "Set the `table` variable to a non-nil value."
+            case .noFields: return "Set the `fields` variable to a non-nil value."
+            case .noOutput: return "Ensure that the combination of input variables (`table`, `fields`) and configuration variables (`sortDescriptors`, `filters`) is coherent and can be used to build a pivot. See the PeakPivot README for more information on how these variables work."
+            }
+        }}
 }
 
 public extension BuildPivot {
