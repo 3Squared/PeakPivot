@@ -118,16 +118,13 @@ extension PivotRow: Comparable {
     
     static func compareBySum(lhs: PivotRow, rhs: PivotRow, ascending: Bool = true)  -> Bool {
         guard
-            let lhsValue = lhs.value.sum,
-            let rhsValue = rhs.value.sum
+            let lhsSum = lhs.value.sum,
+            let rhsSum = rhs.value.sum
         else {
-            if lhs.value.sum == nil && rhs.value.sum != nil {
-                return true
-            }
-            return false
+            return compareByCount(lhs: lhs, rhs: rhs)
         }
         
-        return ascending ? lhsValue < rhsValue : lhsValue > rhsValue
+        return ascending ? lhsSum < rhsSum : lhsSum > rhsSum
     }
 }
 
