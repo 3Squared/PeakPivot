@@ -111,7 +111,7 @@ extension PivotRow: Comparable {
         let rhsValue = rhs.value.count
         
         if lhsValue == rhsValue {
-            return compareByTitle(lhs: lhs, rhs: rhs)
+            return compareByTitle(lhs: lhs, rhs: rhs, ascending: ascending)
         }
         return ascending ? lhsValue < rhsValue : lhsValue > rhsValue
     }
@@ -121,7 +121,7 @@ extension PivotRow: Comparable {
             let lhsSum = lhs.value.sum,
             let rhsSum = rhs.value.sum
         else {
-            return compareByCount(lhs: lhs, rhs: rhs)
+            return compareByCount(lhs: lhs, rhs: rhs, ascending: ascending)
         }
         
         return ascending ? lhsSum < rhsSum : lhsSum > rhsSum
