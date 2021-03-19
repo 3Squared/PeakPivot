@@ -13,11 +13,11 @@ import XCTest
 
 class PivotBuilderMultipleFilterTests: PivotBuilderTestsBase {
     
-    func testTwoLevels_TwoFilters_TwoIncludes() {
+    func testTwoLevels_TwoFilters() {
         builder.fields = ["title", "age_range"]
         builder.filters = [
-            BuildPivotFilter(fieldName: "title", include: ["Dr", Blank]),
-            BuildPivotFilter(fieldName: "age_range", include: ["40s", "60s"]),
+            BuildPivotFilter(fieldName: "title", exclude: ["Honorable", "Mr", "Mrs", "Rev", "Ms"]),
+            BuildPivotFilter(fieldName: "age_range", exclude: ["20s", "30s", "50s"])
         ]
         
         runBuilder()
@@ -36,10 +36,11 @@ class PivotBuilderMultipleFilterTests: PivotBuilderTestsBase {
         XCTAssertEqual(pivotRows, expected)
     }
     
-    func testTwoLevels_TwoFilters_TwoIncludes_ZerosEnabled() {
+    func testTwoLevels_OneFilter_ZerosEnabled() {
         builder.fields = ["title", "age_range"]
         builder.filters = [
-            BuildPivotFilter(fieldName: "age_range", include: ["50s"]),
+            BuildPivotFilter(fieldName: "age_range", exclude: ["20s", "30s", "40s", "60s"])
+            
         ]
         builder.zeroRowsEnabled = true
         
@@ -65,11 +66,12 @@ class PivotBuilderMultipleFilterTests: PivotBuilderTestsBase {
         
     }
     
-    func testTwoLevels_TwoFilters_TwoIncludes_ZerosDisabled() {
+    func testTwoLevels_TwoFilters_ZerosDisabled() {
         builder.fields = ["title", "age_range"]
         builder.filters = [
-            BuildPivotFilter(fieldName: "age_range", include: ["50s"]),
+            BuildPivotFilter(fieldName: "age_range", exclude: ["20s", "30s", "40s", "60s"])
         ]
+        
         builder.zeroRowsEnabled = false
         
         runBuilder()
@@ -90,10 +92,10 @@ class PivotBuilderMultipleFilterTests: PivotBuilderTestsBase {
         
     }
     
-    func testTwoLevels_TwoFilters_TwoIncludes_ZerosDisabled_PercentagesEnabled() {
+    func testTwoLevels_TwoFilters_ZerosDisabled_PercentagesEnabled() {
         builder.fields = ["title", "age_range"]
         builder.filters = [
-            BuildPivotFilter(fieldName: "age_range", include: ["50s"]),
+            BuildPivotFilter(fieldName: "age_range", exclude: ["20s", "30s", "40s", "60s"])
         ]
         builder.zeroRowsEnabled = false
         builder.percentagesEnabled = true

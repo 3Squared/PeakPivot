@@ -11,9 +11,9 @@ import XCTest
 
 class PivotBuilderSingleFilterTests: PivotBuilderTestsBase {
     
-    func testThreeLevels_oneIncludesAtLevelOne() {
+    func testThreeLevels_fourExcludesAtLevelOne() {
         builder.fields = ["age_range", "gender", "title"]
-        builder.filters = [BuildPivotFilter(fieldName: "age_range", include: ["20s"])]
+        builder.filters = [BuildPivotFilter(fieldName: "age_range", exclude: ["30s", "40s", "50s", "60s"])]
         
         runBuilder()
         
@@ -34,9 +34,10 @@ class PivotBuilderSingleFilterTests: PivotBuilderTestsBase {
         XCTAssertEqual(pivotRows, expected)
     }
     
-    func testThreeLevels_twoIncludesAtLevelOne() {
+    func testThreeLevels_threeExcludesAtLevelOne() {
         builder.fields = ["age_range", "gender", "title"]
-        builder.filters = [BuildPivotFilter(fieldName: "age_range", include: ["20s", "50s"])]
+//        builder.filters = [BuildPivotFilter(fieldName: "age_range", include: ["20s", "50s"])]
+        builder.filters = [BuildPivotFilter(fieldName: "age_range", exclude: ["30s", "40s", "60s"])]
         
         runBuilder()
         
@@ -70,10 +71,11 @@ class PivotBuilderSingleFilterTests: PivotBuilderTestsBase {
         XCTAssertEqual(pivotRows, expected)
     }
     
-    func testThreeLevels_threeIncludesAtLevelTwo_sortByValueAscending_noPercentages() {
+    func testThreeLevels_twoExcludesAtLevelTwo_sortByValueAscending_noPercentages() {
         builder.sortDescriptor = .byCount(ascending: true)
         builder.fields = ["age_range", "gender"]
-        builder.filters = [BuildPivotFilter(fieldName: "age_range", include: ["20s", "30s", "60s"])]
+//        builder.filters = [BuildPivotFilter(fieldName: "age_range", include: ["20s", "30s", "60s"])]
+        builder.filters = [BuildPivotFilter(fieldName: "age_range", exclude: ["40s", "50s"])]
         
         runBuilder()
         
@@ -100,7 +102,7 @@ class PivotBuilderSingleFilterTests: PivotBuilderTestsBase {
     
     func testOneLevels_blankInclude() {
         builder.fields = ["gender"]
-        builder.filters = [BuildPivotFilter(fieldName: "gender", include: [Blank])]
+        builder.filters = [BuildPivotFilter(fieldName: "gender", exclude: ["Female", "Male"])]
         
         runBuilder()
         

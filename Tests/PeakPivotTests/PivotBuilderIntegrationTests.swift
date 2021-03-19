@@ -15,7 +15,8 @@ class PivotBuilderIntegrationTests: PivotBuilderTestsBase {
         builder.percentagesEnabled = false
         builder.table = TestData.people
         builder.fields = ["age_range", "gender"]
-        builder.filters = [BuildPivotFilter(fieldName: "age_range", include: ["40s"])]
+        
+        builder.filters = [BuildPivotFilter(fieldName: "age_range", exclude: ["20s", "30s", "50s", "60s"])]
         builder.percentagesEnabled = true
         
         runBuilder()
@@ -35,7 +36,7 @@ class PivotBuilderIntegrationTests: PivotBuilderTestsBase {
         builder.percentagesEnabled = false
         builder.table = TestData.people
         builder.fields = ["age_range", "gender"]
-        builder.filters = [BuildPivotFilter(fieldName: "age_range", include: ["40s", "60s"])]
+        builder.filters = [BuildPivotFilter(fieldName: "age_range", exclude: ["20s", "30s", "50s"])]
         builder.sortDescriptor = .byCount(ascending: false)
         builder.percentagesEnabled = true
         
@@ -61,7 +62,7 @@ class PivotBuilderIntegrationTests: PivotBuilderTestsBase {
         builder.percentagesEnabled = true
            builder.sortDescriptor = .byCount(ascending: false)
            builder.fields = ["age_range", "gender", "title"]
-           builder.filters = [BuildPivotFilter(fieldName: "gender", include: ["Female"])]
+        builder.filters = [BuildPivotFilter(fieldName: "gender", exclude: ["Male", Blank])]
            
           runBuilder()
            
