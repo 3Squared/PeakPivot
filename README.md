@@ -38,7 +38,7 @@ These types configure the pivot that is built. They are highlighted in green in 
 
 `FieldName`. A string representing a column-name from the input table to pivot around.
 
-`BuildPivotFilter`. Describes how to apply a filter to a pivot table to only include certain `FieldName`s and values
+`BuildPivotFilter`. Describes how to apply a filter to a pivot table to exclude certain `FieldName`s and values.
 
 `BuildPivotDescriptor`. Describes how to apply a sort to pivot table.
 
@@ -50,7 +50,7 @@ These types are the output from the pivot building logic. They are highlighted i
 
 `PivotRow`. A row in a pivot table, that stores the computed value information (the count, sum, percentage etc), what level in the overall table is sits at, it's title (corresponds to the `FieldName` in the input `Table`), and any subrows it has. The subrows represent the nesting of groups in a pivot table. The number of levels to this nesting is equal to  (number of `FieldName`s - 1) as passed into the `BuildPivot`.
 
-`FilterField`. All the fields from a generated pivot table that can be used to filter  the pivot table on a subsequent build. Use these `FilterField`s to create `BuildPivotFilter`s as needed.
+`FilterField`. All the fields from a generated pivot table that can be used to filter the pivot table on a subsequent build. Use these `FilterField`s to create `BuildPivotFilter`s as needed.
 
 ## Building a Pivot
 
@@ -70,7 +70,7 @@ do {
     builder.table = csvRows
     builder.fields = ["title", "age"] // "age" is summarised
     builder.sortDescriptor = .byTitle(ascending: false) 
-    builder.filters = [BuildPivotFilter(fieldName: "title", include: ["Ms", "Mrs", "Mr", "Honorable", "Dr"])] // exclude "Blank" and "Rev" from the pivot table
+    builder.filters = [BuildPivotFilter(fieldName: "title", exclude: ["Blank", "Rev"])] // exclude "Blank" and "Rev" from the pivot table
     builder.sumsEnabled = true // compute sums
     builder.percentagesEnabled = true // compute percentages
 
