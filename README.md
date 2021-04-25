@@ -6,17 +6,21 @@
 
 > Pivot tables are a technique in data processing. They arrange and rearrange (or "pivot") statistics in order to draw attention to useful information. This leads to finding figures and facts quickly making them integral to data analysis. 
 
-PeakPivot is a pure-swift implementation of pivot tables modelled on the implementation offered by Microsoft Excell. PeakPivot provides the base types and business logic for summarising tabular data into a pivot table.
+PeakPivot is a pure-swift implementation of pivot tables modelled on the implementation offered by Microsoft Excel and Google Sheets. PeakPivot provides the base types and business logic for summarising tabular data into a pivot table.
 
 ## Types 
 
-PeakPivot defines a number of types that model the data necessary for building a pivot table, configuring a pivot table builder, and the resulting output pivot table.
+PeakPivot defines a number of types that model
+
+1. The **input** data necessary for building a pivot table,
+2. The **configuration** values for a pivot table builder, 
+3. The resulting **output** pivot table.
 
 Below is screenshot of a pivot table built in Microsoft Excel from the [`people.csv`](Assets/people.csv) file. It is annotated to show the corresponding PeakPivot types.
 
 ![](Assets/diagram.png)
 
-### Input 
+### 1. Input 
 
 These types are the input to the pivot building logic. They are highlighted in blue in the [diagram above](#Types).
 
@@ -28,7 +32,7 @@ These types are the input to the pivot building logic. They are highlighted in b
 
 `FieldValue`. A string representing a cell-value for a given column and row. Note that `String` is used as the type here to make it easier for CSV parsing and conforming `FieldValue` to `Equatable` (necessary for unit testing). Any non-string value can be boxed into a `FieldValue` if required.
 
-### Builder Configuration
+### 2. Builder Configuration
 
 These types configure the pivot that is built. They are highlighted in green in the [diagram above](#Types).
 
@@ -42,7 +46,7 @@ These types configure the pivot that is built. They are highlighted in green in 
 
 `BuildPivotDescriptor`. Describes how to apply a sort to pivot table.
 
-### Output
+### 3. Output
 
 These types are the output from the pivot building logic. They are highlighted in red in the [diagram above](#Types).
 
@@ -54,9 +58,9 @@ These types are the output from the pivot building logic. They are highlighted i
 
 ## Building a Pivot
 
-To recreate the pivot table shown [Excell spreadsheet above](#Types) we load in the [`people.csv`](Assets/people.csv) csv file using SwiftCSV (including with PeakPivot) and construct a `PivotBuilder` with the corresponding input and configuration data.
+To recreate the pivot table shown in the [Excel spreadsheet above](#Types) we load in the [`people.csv`](Assets/people.csv) csv file using SwiftCSV (including with PeakPivot) and construct a `PivotBuilder` with the corresponding input and configuration data.
 
-Set the `.fields` variable to the `FieldName`s you want to group the pivot table using. The last `FieldName` in the array defines the `FieldValue`s in the input `Table` to summarise using sum, count and percentage operators.
+Set the `fields` variable to the `FieldName`s you want to group the pivot table using. The last `FieldName` in the array defines the `FieldValue`s in the input `Table` to summarise using sum, count and percentage operators.
 
 Once configured call the `build()` function.
 
@@ -67,15 +71,21 @@ do {
     let csvRows = csv.namedRows
 
     let builder = PivotBuilder()
+    
+    // Set the input
     builder.table = csvRows
     builder.fields = ["title", "age"] // "age" is summarised
+    
+    // Configure the builder
     builder.sortDescriptor = .byTitle(ascending: false) 
     builder.filters = [BuildPivotFilter(fieldName: "title", exclude: ["Blank", "Rev"])] // exclude "Blank" and "Rev" from the pivot table
     builder.sumsEnabled = true // compute sums
     builder.percentagesEnabled = true // compute percentages
 
-    let pivot = try builder.build() //  run and catch any errors
+    // Run the builder
+    let pivot = try builder.build()
     
+    // Below are examples of the output 
     // pivot.rows will equal
     let pivotRows = [
     PivotRow(level: 0, title: "Ms", value: PivotRow.Value(count: 1, sum: 33, percentage: 1/9), subRows: [
@@ -137,7 +147,7 @@ do {
 ]
 
 } catch  {
-    // Handle error
+    // Handle errors
 }
 
 ```
