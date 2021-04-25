@@ -13,12 +13,12 @@ public struct BuildPivotFilter {
     /// The field name to filter on
     public let fieldName: FieldName
     
-    /// The values of the field name to include
-    public let include: [FieldValue]
+    /// The values of the field name to exclude
+    public let exclude: [FieldValue]
     
-    public init(fieldName: FieldName, include: [FieldName]) {
+    public init(fieldName: FieldName, exclude: [FieldName]) {
         self.fieldName = fieldName
-        self.include = include
+        self.exclude = exclude
     }
 }
 

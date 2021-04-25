@@ -140,7 +140,7 @@ fileprivate extension BuildPivot {
             if let filters = self.filters {
                 
                 let matchingFilters = filters.filter { filter -> Bool in
-                    return fieldName == filter.fieldName && !filter.include.contains(fieldValue)
+                    return fieldName == filter.fieldName && filter.exclude.contains(fieldValue)
                 }
                 
                 if matchingFilters.count > 0 {
