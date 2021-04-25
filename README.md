@@ -136,7 +136,7 @@ do {
 
 ]
 
-} else  {
+} catch  {
     // Handle error
 }
 
