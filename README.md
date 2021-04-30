@@ -1,5 +1,7 @@
 # PeakPivot
 
+[![Swift](https://github.com/3Squared/PeakPivot/actions/workflows/swift.yml/badge.svg)](https://github.com/3Squared/PeakPivot/actions/workflows/swift.yml)
+
 <!-- ![Swift](https://github.com/3squared/PeakPivot/workflows/Swift/badge.svg?branch=main) --->
 
 [Wikipedia](https://en.wikipedia.org/wiki/Pivot_table) says:
